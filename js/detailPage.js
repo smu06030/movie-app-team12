@@ -14,7 +14,7 @@ const fetchMovieDetail = async () => {
     if(response){
       movieDetailData.push(formattedDetailData(response))
     }else{
-      throw new Error();
+      throw new Error("영화 디테일 정보를 가져오는데 실패했습니다.");
     }
 
     return movieDetailData;
