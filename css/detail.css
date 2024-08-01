@@ -1,0 +1,281 @@
+:root {
+  --width--poster500: 500px;
+  --width--poster300: 300px;
+}
+
+*{
+  color: #fff; 
+}
+
+a{
+  text-decoration: none;
+}
+
+ul{
+  padding: 0;
+}
+
+li{
+  list-style: none;
+}
+
+body{
+  font-family: "Pretendard", sans-serif;
+  background-color: #141f29; 
+  font-weight: 400;
+  font-size: 1rem;
+  min-width: 640px;
+}
+
+.container{
+  margin: 0 auto;
+  padding: 0;
+}
+
+/* header */
+.header{
+  background-color: #000;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.09));
+  padding : 0 24px;
+  min-height: 64px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
+}
+
+.header .logo{
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+/* main */
+.main{
+  padding: 16px 24px;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  position: relative;
+  isolation: isolate;
+}
+
+.main::after {
+  content: '';
+  position: absolute;
+  background: rgb(29, 29, 29);
+  z-index: -1;
+  inset: 0;
+  opacity: 0.9;
+}
+
+.movieDetailWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  margin-top: 2rem;
+}
+
+.movieDetails {
+  display: none;
+  margin-bottom: 2rem;
+  /*flex-direction: column; /* 추가한거*/
+}
+
+.movieDetails .poster {
+  /*display: flex; /* 추가한거*/
+  /*justify-content: center; /* 추가한거*/
+  flex-shrink: 0;
+  margin-right: 70px;
+}
+
+.movieDetails .poster img{
+  /* width: var(--width--poster);
+  height: var(--width--poster) * 3 / 2; */
+  border-radius: 10px;
+}
+
+.movieDetails .specs {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start; /* 바꾼거*/
+  /* text-align: center; 추가한거*/
+  max-width: 600px;
+  flex-grow: 1;
+  width: 100%;
+  /*margin-top: 0.5rem;  바꾼거 */
+}
+
+.specs .title {
+  font-weight: 700;
+}
+
+.specs .title .koTitle{
+  font-size: 2.5rem;
+  color: #fff;
+}
+
+.specs .title .enTitle {
+  margin-top: -0.825rem;
+}
+
+.specs .title .enTitle{
+  font-size: 1.5rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.specs .info {
+  display: flex;
+  margin-top: .5rem;
+}
+
+.specs .info span {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.specs .info .year::after {
+  content: "ㆍ";
+}
+
+.specs .rating {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  margin: 1rem 0;
+}
+.specs .rating img {
+  width: 24px;
+  margin-right: 4px;
+}
+.specs .rating span {
+  font-size: 1.125rem;
+}
+.specs .rating .total {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.specs .overview, 
+.specs .overview h2,
+.specs .genres h2 {
+  margin-bottom: 1rem;
+}
+
+.specs .overview p {
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: wrap;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  line-height: 1.7;
+}
+
+.specs .genre {
+  display: flex;
+  margin-bottom: .5rem;
+}
+
+.genreContainer {
+  height: 1.5rem;
+  padding: 0.5rem 1rem;
+  margin-right: 1rem;
+  border-radius: 1rem;
+  background-color: rgba(185, 185, 185, 0.6);
+  font-weight: bold;
+  font-size: 0.825rem;
+  line-height: 0.8rem;
+  text-transform: capitalize;
+  display: flex;
+  gap: 0.25rem;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* 스켈레톤 UI */
+
+.skeletons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: start;
+  margin: 0 auto;
+} 
+
+.skeleton.poster {
+  width: var(--width--poster300);
+  height: calc(var(--width--poster300) * 3 / 2);
+  flex-shrink: 0;
+}
+
+.skeletons .specs{
+  flex-grow: 0;
+}
+
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
+  background-color: #1C212E;
+}
+.skeleton::after{
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: linear-gradient(270deg,
+  rgba(255,255,255,0),
+  rgba(255,255,255,.2),
+  rgba(255,255,255,0)
+  );
+  border-radius: 1rem;
+  transform: translateX(-100%);
+  animation: load 1s infinite;
+}
+
+.skeleton.genres {
+  width: 150px;
+  height: 1.5rem;
+  margin-bottom: .825rem;
+}
+.skeleton.titleK {
+  width: 400px;
+  height: 3rem;
+  margin-bottom: .5rem;
+  border-radius: 2rem;
+}
+.skeleton.titleE {
+  width: 200px;
+  height: 2rem;
+  margin-bottom: .5rem;
+}
+.skeleton.info {
+  width: 100px;
+  height: 1.5rem;
+  margin-bottom: .5rem;
+}
+.skeleton.rating {
+  width: 70px;
+  height: 1.5rem;
+  margin-bottom: .5rem;
+}
+.skeleton.overview {
+  width: 100%;
+  height: 220px;
+  margin-bottom: .5rem;
+}
+
+@keyframes load {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}

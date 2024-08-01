@@ -2,7 +2,6 @@ import { API_KEY } from './config.js';
 
 const baseUrl = 'https://api.themoviedb.org/3';
 const baseLanguage = 'ko-KR';
-const url = `${baseUrl}/movie/top_rated?language=${baseLanguage}&page=${1}`;
 
 const options = {
   method: 'GET',
@@ -12,7 +11,17 @@ const options = {
   }
 };
 
-const getTopLated = async () => {
+const generateUrls = (type, { movieId = null, page=1 } = {}) => {
+  switch(type){
+    case 'top_rated':
+      return `${baseUrl}/movie/top_rated?language=${baseLanguage}&page=${page}`;
+    case 'detail':
+      return `${baseUrl}/movie/${movieId}?language=${baseLanguage}`;
+  }
+}
+
+const getTopLated = async (type) => {
+  const url = generateUrls(type)
   try{
     const response = await fetch(url, options);
     const json = await response.json();
@@ -23,4 +32,21 @@ const getTopLated = async () => {
   }
 }
 
-export { getTopLated }
+const getMovieDetail = async (type, movieId) => {
+  const url = generateUrls(type, { movieId })
+  try{
+    const response = await fetch(url, options);
+    
+    if(response.status === 200){
+      const json = await response.json();
+      return json;
+    }else{
+      throw new Error();
+    }
+    
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+export { getTopLated, getMovieDetail }
