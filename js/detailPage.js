@@ -1,5 +1,5 @@
 import { getMovieDetail } from './API.js';
-import formatMovie  from './formatMovie.js';
+import { formattedDetailData }  from './formatMovie.js';
 
 const urlParams = new URLSearchParams(window.location.search); // URL query parameter 가져오기
 const movieId = urlParams.get('id'); // 매개변수 id 값 가져오기
@@ -22,20 +22,6 @@ const fetchMovieDetail = async () => {
     console.error(err)
   }
 }
-
-// 영화 디테일 데이터 포멧
-const formattedDetailData = (details) =>{
-  const basicData = formatMovie(details)
-  
-  return {
-    ...basicData,
-    runtime: details.runtime,
-    backdropUrl: details.backdrop_path,
-    genres: formatGenres(details.genres),
-  };
-}
-
-const formatGenres = (genres) => genres.map(genre => genre.name);
 
 // UI 요소 선택자
 const selectors = {

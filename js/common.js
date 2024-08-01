@@ -1,5 +1,5 @@
 import { getTopLated } from './API.js';
-import formatMovie  from './formatMovie.js';
+import { formattedMovieData }  from './formatMovie.js';
 
 const movieLists = [];
 
@@ -16,8 +16,7 @@ const fetchMovieData = async () => {
   }  
 }
 
-// 영화 데이터 포멧
-const formattedMovieData = (movies) => movies.map(formatMovie)
+
 
 // 영화 카드 그리기
 const createMovieCards = async (filteredMovies = null) => {
