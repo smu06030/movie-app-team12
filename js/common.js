@@ -1,13 +1,14 @@
 import { getTopLated } from './API.js';
+import { formattedMovieData }  from './formatMovie.js';
 
 const movieLists = [];
 
 // 영화 데이터 가져오기
 const fetchMovieData = async () => {
   try{
-    const { results: movieData } = await getTopLated();
+    const { results: movies } = await getTopLated('top_rated');
     
-    movieLists.push(...formattedMovieData(movieData))
+    movieLists.push(...formattedMovieData(movies))
     
     return movieLists;
   } catch (err){
@@ -15,27 +16,12 @@ const fetchMovieData = async () => {
   }  
 }
 
-// 영화 데이터 포멧
-const formattedMovieData = (movieData) => {
-  return movieData.map(movie => {
-    const formatData = {
-      id: movie.id,
-      enTitle: movie.original_title.toLowerCase(),
-      koTitle: movie.title,
-      imgUrl: movie.poster_path,
-      overview: movie.overview,
-      rating: movie.vote_average.toFixed(2),
-      date: movie.release_date.slice(0,4),
-    }
 
-    return formatData
-  })
-}
 
 // 영화 카드 그리기
 const createMovieCards = async (filteredMovies = null) => {
   const movieLists = filteredMovies || await fetchMovieData();
-  
+
   const ul = document.querySelector('.movieCards');
   ul.innerHTML = '';
   
