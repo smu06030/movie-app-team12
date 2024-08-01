@@ -27,28 +27,38 @@ const fetchMovieDetail = async () => {
 const formattedDetailData = (details) =>{
   const basicData = formatMovie(details)
   
-  const formatData = {
+  return {
     ...basicData,
     runtime: details.runtime,
     backdropUrl: details.backdrop_path,
     genres: formatGenres(details.genres),
-  }
-  
-  return formatData;
+  };
 }
 
-const formatGenres = (genres) => {
-  return genres.map(genre => genre.name)
-}
+const formatGenres = (genres) => genres.map(genre => genre.name);
+
+// UI 요소 선택자
+const selectors = {
+  skeletons: document.querySelector('.skeletons.movieDetails'),
+  movieDetails: document.querySelector('.movieDetails:not(.skeletons)'),
+  genreList: document.querySelector('.genre'),
+  posterDiv: document.querySelector('.movieDetails:not(.skeletons) .poster'),
+  koTitleDiv: document.querySelector('.koTitle'),
+  enTitleDiv: document.querySelector('.enTitle'),
+  yearDiv: document.querySelector('.year'),
+  runtimeDiv: document.querySelector('.runtime'),
+  gradeDiv: document.querySelector('.grade'),
+  totalDiv: document.querySelector('.total'),
+  overviewDiv: document.querySelector('.overview:not(.skeleton)'),
+  mainDiv: document.querySelector('.main'),
+  starImg: document.querySelector('.star')
+};
 
 // 영화 디테일 그리기
-const skeletons = document.querySelector('.skeletons.movieDetails');
-const movieDetails = document.querySelector('.movieDetails:not(.skeletons)');
-
 const createMovieDetailCard = async () => {
   // 데이터가 로드되기 전 스켈레톤 UI 보여줌
-  skeletons.style.display = 'flex';
-  movieDetails.style.display = 'none';
+  selectors.skeletons.style.display = 'flex';
+  selectors.movieDetails.style.display = 'none';
 
   const movieDetail = await fetchMovieDetail();
 
@@ -58,48 +68,47 @@ const createMovieDetailCard = async () => {
   }
 
   // 데이터가 로드되면 스켈레톤 UI 숨김
-  skeletons.style.display = 'none';
-  movieDetails.style.display = 'flex';
+  selectors.skeletons.style.display = 'none';
+  selectors.movieDetails.style.display = 'flex';
 
-  const {id, koTitle, enTitle, genres, imgUrl, backdropUrl, overview, date, rating, runtime } = movieDetail[0];
+  const {
+    id, 
+    koTitle, 
+    enTitle, 
+    genres, 
+    imgUrl, 
+    backdropUrl, 
+    overview, 
+    date, 
+    rating, 
+    runtime 
+  } = movieDetail[0];
 
-  // 태그 가져오기
-  const genreList = document.querySelector('.genre');
-  const posterDiv = document.querySelector('.movieDetails:not(.skeletons) .poster');
-  const koTitleDiv = document.querySelector('.koTitle');
-  const enTitleDiv = document.querySelector('.enTitle');
-  const yearDiv = document.querySelector('.year');
-  const runtimeDiv = document.querySelector('.runtime');
-  const gradeDiv = document.querySelector('.grade');
-  const totalDiv = document.querySelector('.total');
-  const overviewDiv = document.querySelector('.overview:not(.skeleton)');
-  
+
   // 영화 디테일 데이터 추가
-  koTitleDiv.textContent = koTitle;
-  enTitleDiv.textContent = enTitle;
-  yearDiv.textContent = date;
-  runtimeDiv.textContent = `${ runtime }분`;
-  gradeDiv.textContent = rating;
-  overviewDiv.textContent = overview;
-  totalDiv.textContent = ' / 10';
+  selectors.koTitleDiv.textContent = koTitle;
+  selectors.enTitleDiv.textContent = enTitle;
+  selectors.yearDiv.textContent = date;
+  selectors.runtimeDiv.textContent = `${ runtime }분`;
+  selectors.gradeDiv.textContent = rating;
+  selectors.overviewDiv.textContent = overview;
+  selectors.totalDiv.textContent = ' / 10';
 
   // 배경 이미지 설정
-  const mainDiv = document.querySelector('.main')
-  mainDiv.style.backgroundImage = `url(https://image.tmdb.org/t/p/original${ backdropUrl })`;
+  selectors.mainDiv.style.backgroundImage = `url(https://image.tmdb.org/t/p/original${ backdropUrl })`;
 
   // 영화 포스터 추가
   const img = document.createElement('img');
   img.src = `https://image.tmdb.org/t/p/w300${ imgUrl }`;
   img.alt = koTitle
-  posterDiv.appendChild(img)
+  selectors.posterDiv.appendChild(img)
 
   // rating 이미지 추가
-  const starImg = document.querySelector('.star');
-  starImg.src = 'https://i.ibb.co/yFS3gHB/star.png';
-  starImg.alt = '별';
+  selectors.starImg.src = 'https://i.ibb.co/yFS3gHB/star.png';
+  selectors.starImg.alt = '별';
 
   // 장르 리스트 업데이트
-  genreList.innerHTML = genres.map(genre => `
+  selectors.genreList.innerHTML = genres.map(genre => `
     <div class="genreContainer">
       <span class="genreValue">${genre}</span>
     </div>

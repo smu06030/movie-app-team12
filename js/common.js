@@ -62,7 +62,7 @@ const createMovieCards = async (filteredMovies = null) => {
 
 // 버튼 클릭 or 엔터 입력 시 영화 검색
 const form = document.getElementById('searchForm');
-console.log(form)
+
 form.addEventListener('submit', (e) => {
   e.preventDefault();
   
