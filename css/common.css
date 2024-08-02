@@ -1,56 +1,52 @@
-* {
-  color: #fff;
+*{
+  color: #fff; 
 }
 
-a {
+a{
   text-decoration: none;
 }
 
-ul {
+ul{
   padding: 0;
 }
 
-li {
+li{
   list-style: none;
 }
 
-body {
+body{
   font-family: "Pretendard", sans-serif;
-  background-color: #141f29;
+  background-color: #141f29; 
   font-weight: 400;
   font-size: 1rem;
   min-width: 640px;
 }
 
-.container {
+.container{
   margin: 0 auto;
   padding: 0;
 }
 
 /* header */
 
-.header {
+.header{
   background-color: #000;
-  background-image: linear-gradient(
-    rgba(255, 255, 255, 0.09),
-    rgba(255, 255, 255, 0.09)
-  );
-  padding: 0 24px;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.09));
+  padding : 0 24px;
   min-height: 64px;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
-    0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
-.header .logo {
+.header .logo{
   font-size: 1.2rem;
   font-weight: 700;
 }
 
-.header .searchForm {
+.header .searchForm{
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -60,12 +56,12 @@ body {
   left: 100px;
 }
 
-.header .searchForm:hover {
+.header .searchForm:hover{
   border-bottom: 1px solid white;
   transition: all 0.3s;
 }
 
-.header .searchForm input {
+.header .searchForm input{
   width: 300px;
   background-color: transparent;
   outline: none;
@@ -73,23 +69,23 @@ body {
   padding: 8px;
 }
 
-.header .searchForm button {
+.header .searchForm button{
   background-color: transparent;
   cursor: pointer;
   border: 0;
   padding: 8px;
 }
 
-.header .searchForm button:hover {
+.header .searchForm button:hover{
   border-radius: 50%;
   background-color: #313131;
 }
 
-.header .searchForm button img {
+.header .searchForm button img{
   width: 24px;
 }
 
-.header .githubLink a img {
+.header .githubLink a img{
   width: 36px;
 }
 
@@ -100,26 +96,17 @@ body {
 
 /* main */
 
-.main {
+.main{
   padding: 16px 24px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
-/* .main .mainTitle {
+/* .main .mainTitle{
   text-align: center;
   font-size: 1.5rem;
   font-weight: 500;
 } */
 
-.sortFormSelect {
-  display: flex;
-  align-self: flex-end;
-  margin: 1rem 0;
-}
-
-.main .movieCards {
+.main .movieCards{
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
@@ -129,26 +116,22 @@ body {
   padding: 0 100px;
 }
 
-.main ul li {
-.main ul li {
+.main ul li{
   cursor: pointer;
   font-size: 0.875rem;
   width: 12rem;
   overflow: hidden;
 }
 
-.main ul li .movieWrapper:hover {
-.main ul li .movieWrapper:hover {
+.main ul li .movieWrapper:hover{
   border-radius: 0.3rem;
   transition: all 0.3s;
   filter: brightness(110%);
-  box-shadow: 0 0 20px 5px rgba(43, 60, 75, 0.4);
-  box-shadow: 0 0 20px 5px rgba(43, 60, 75, 0.4);
+  box-shadow: 0 0 20px 5px rgba(43,60,75, .4);
   background-color: #2b3c4b;
 }
 
-.main ul li .moviePoster img {
-.main ul li .moviePoster img {
+.main ul li .moviePoster img{
   width: 12rem;
   height: 18rem;
   object-fit: cover;
@@ -156,20 +139,17 @@ body {
   border-top-right-radius: 0.3rem;
 }
 
-.movie .movieKoTitle {
-.movie .movieKoTitle {
+.movie .movieKoTitle{
   padding: 8px 8px 2px;
   font-weight: 700;
 }
 
-.movie .movieEnTitle {
-.movie .movieEnTitle {
+.movie .movieEnTitle{
   padding: 0 8px 8px;
   font-weight: 400;
 }
 
-.movie .movieOverview {
-.movie .movieOverview {
+.movie .movieOverview{
   padding: 2px 8px 2px;
   display: -webkit-box;
   overflow: hidden;
@@ -179,31 +159,23 @@ body {
   -webkit-box-orient: vertical;
 }
 
-.movie .movieInfo {
-.movie .movieInfo {
+.movie .movieInfo{
   display: flex;
   justify-content: space-between;
   padding: 4px 8px 8px;
 }
 
-.movieYear,
-.movieTotal,
-.movieEnTitle {
-.movieYear,
-.movieTotal,
-.movieEnTitle {
+.movieYear, .movieTotal, .movieEnTitle{
   color: rgba(255, 255, 255, 0.7);
 }
 
-.movieRating {
-.movieRating {
+.movieRating{
   display: flex;
   justify-content: end;
   align-items: center;
 }
 
-.movieRating img {
-.movieRating img {
+.movieRating img{
   width: 18px;
   margin-right: 2px;
 }

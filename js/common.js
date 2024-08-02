@@ -25,15 +25,10 @@ const fetchMovieData = async () => {
 const createMovieCards = async (filteredMovies = null) => {
   const movieLists = filteredMovies || await fetchMovieData();
 
-
-
   const ul = document.querySelector('.movieCards');
   ul.innerHTML = '';
 
-
   movieLists.map(movie => {
-    const { id, koTitle, enTitle, imgUrl, overview, rating, date } = movie
-
     const { id, koTitle, enTitle, imgUrl, overview, rating, date } = movie
 
     const li = document.createElement('li');
@@ -60,12 +55,7 @@ const createMovieCards = async (filteredMovies = null) => {
         </div>
       </a>
     `;
-    li.addEventListener('click', () => {
-      alert('영화 id: ' + id);
-    });
-
     ul.appendChild(li);
-
 
   })
 }
@@ -76,11 +66,7 @@ const form = document.getElementById('searchForm');
 form.addEventListener('submit', (e) => {
   e.preventDefault();
 
-
   const input = document.getElementById('search').value.trim()
-
-  input.length
-    ? createMovieCards(filterNames(input))
 
   input.length
     ? createMovieCards(filterNames(input))
@@ -97,14 +83,9 @@ const filterNames = (input) => {
       return check
     })
     : []
-
-  return value
-    ? movieLists.filter(movie => {
-      const check = movie.koTitle.includes(value) || movie.enTitle.includes(value);
-      return check
-    })
-    : []
 }
+
+// createMovieCards();
 
 document.addEventListener('DOMContentLoaded', async () => {
   await fetchMovieData();
