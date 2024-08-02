@@ -31,29 +31,27 @@ const createMovieCards = async (filteredMovies = null) => {
     const li = document.createElement('li');
     li.setAttribute('class', 'movie');
     li.innerHTML = `
-      <div class="movieWrapper">
-        <span class="moviePoster">
-          <img src="https://image.tmdb.org/t/p/w500${imgUrl}" alt="${koTitle}">
-        </span>
-        <div class="movieKoTitle">${koTitle}</div>
-        <div class="movieEnTitle">(${enTitle})</div>
-        <div class="movieOverview">${overview}</div>
-        <div class="movieInfo">
-          <h4 class="movieYear">${date}</h4>
-          <div class="movieRating">
-            <img src="./images/star.png" alt="별">
-            <p>
-              <span class="movieGrade">${rating}</span>
-              <span class="movieTotal"> / 10</span>
-            </p>
+      <a href="./detail.html?id=${id}">
+        <div class="movieWrapper">
+          <span class="moviePoster">
+            <img src="https://image.tmdb.org/t/p/w500${imgUrl}" alt="${koTitle}">
+          </span>
+          <div class="movieKoTitle">${koTitle}</div>
+          <div class="movieEnTitle">(${enTitle})</div>
+          <div class="movieOverview">${overview}</div>
+          <div class="movieInfo">
+            <h4 class="movieYear">${date}</h4>
+            <div class="movieRating">
+              <img src="./images/star.png" alt="별">
+              <p>
+                <span class="movieGrade">${rating}</span>
+                <span class="movieTotal"> / 10</span>
+              </p>
+            </div>
           </div>
         </div>
-      </div>
+      </a>
     `;
-    li.addEventListener('click', () => {
-      alert('영화 id: '+id);
-    });
-
     ul.appendChild(li);
     
   })
