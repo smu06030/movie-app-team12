@@ -1,0 +1,48 @@
+.review {
+    width: 100%;
+    height: 300px;
+    border: 1px solid black;
+}
+
+.reviewTitle {
+    width: 100%;
+    height: 30px;
+    text-align: center;
+    align-content: center;
+    background-color: lightblue;
+}
+
+.reviewBox {
+    width: 100%;
+    height: 270px;
+    background-color: aliceblue;
+    overflow: auto;
+    overflow-x: hidden;
+}
+
+.input {
+    width: 100%;
+    height: 30px;
+}
+
+.inputIdPw > input {
+    width: 44%;
+    height: 30px;
+    margin: 10px;
+}
+
+.inputValue {
+    display: flex;
+}
+
+.inputValue > textarea {
+    width: 90%;
+    height: 50px;
+    margin: 10px;
+}
+
+.inputValue > button {
+    width: 6%;
+    height: 55px;
+    margin: 10px;
+}
