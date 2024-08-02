@@ -26,13 +26,21 @@ function getReview() {
             <div>
                 <div>${reviewList[i]["user"]}</div>
                 <div>${reviewList[i]["review"]}</div>
-                <button>수정</button>
-                <button>삭제</button>
+                <button onclick="updateReview(${i})">수정</button>
+                <button onclick="deleteReview(${i})">삭제</button>
             </div>
             <hr>
         `;
         reviewBox.innerHTML += tempHtml;
     }
+}
+
+// 리뷰 삭제하기
+function deleteReview(index) {
+    reviewList.splice(index, 1);
+    localStorage.setItem("review", JSON.stringify(reviewList));
+
+    getReview();
 }
 
 window.onload = () => {
