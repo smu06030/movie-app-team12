@@ -107,11 +107,11 @@ body {
   align-items: center;
 }
 
-.main .mainTitle {
+/* .main .mainTitle {
   text-align: center;
   font-size: 1.5rem;
   font-weight: 500;
-}
+} */
 
 .sortFormSelect {
   display: flex;
@@ -130,6 +130,7 @@ body {
 }
 
 .main ul li {
+.main ul li {
   cursor: pointer;
   font-size: 0.875rem;
   width: 12rem;
@@ -137,13 +138,16 @@ body {
 }
 
 .main ul li .movieWrapper:hover {
+.main ul li .movieWrapper:hover {
   border-radius: 0.3rem;
   transition: all 0.3s;
   filter: brightness(110%);
   box-shadow: 0 0 20px 5px rgba(43, 60, 75, 0.4);
+  box-shadow: 0 0 20px 5px rgba(43, 60, 75, 0.4);
   background-color: #2b3c4b;
 }
 
+.main ul li .moviePoster img {
 .main ul li .moviePoster img {
   width: 12rem;
   height: 18rem;
@@ -153,15 +157,18 @@ body {
 }
 
 .movie .movieKoTitle {
+.movie .movieKoTitle {
   padding: 8px 8px 2px;
   font-weight: 700;
 }
 
 .movie .movieEnTitle {
+.movie .movieEnTitle {
   padding: 0 8px 8px;
   font-weight: 400;
 }
 
+.movie .movieOverview {
 .movie .movieOverview {
   padding: 2px 8px 2px;
   display: -webkit-box;
@@ -173,6 +180,7 @@ body {
 }
 
 .movie .movieInfo {
+.movie .movieInfo {
   display: flex;
   justify-content: space-between;
   padding: 4px 8px 8px;
@@ -181,9 +189,13 @@ body {
 .movieYear,
 .movieTotal,
 .movieEnTitle {
+.movieYear,
+.movieTotal,
+.movieEnTitle {
   color: rgba(255, 255, 255, 0.7);
 }
 
+.movieRating {
 .movieRating {
   display: flex;
   justify-content: end;
@@ -191,6 +203,39 @@ body {
 }
 
 .movieRating img {
+.movieRating img {
   width: 18px;
   margin-right: 2px;
+}
+
+.mainTitleSelectBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+}
+
+.mainTitle {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 500;
+  flex-grow: 1;
+}
+
+.sortFormSelect {
+  display: flex;
+  align-self: flex-end;
+  margin: 1rem 0;
+}
+
+#selectFilterMovie {
+  background-color: #141f29;
+  color: white;
+  border: 1px solid #969696;
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+  font-weight: bold;
+  position: absolute;
+  right: 160px;
 }
