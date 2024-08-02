@@ -90,6 +90,8 @@ body{
 .movieDetails .poster {
   /*display: flex; /* 추가한거*/
   /*justify-content: center; /* 추가한거*/
+  width: var(--width--poster300);
+  height: calc(var(--width--poster300) * 3 / 2);
   flex-shrink: 0;
   margin-right: 70px;
 }
@@ -135,12 +137,20 @@ body{
   margin-top: .5rem;
 }
 
-.specs .info span {
+.specs .info span, .specs .director .label {
   color: rgba(255, 255, 255, 0.7);
 }
 
 .specs .info .year::after {
   content: "ㆍ";
+}
+
+.specs .director {
+  margin-top: .5rem;
+}
+
+.specs .director .name {
+  font-weight: 700;
 }
 
 .specs .rating {
