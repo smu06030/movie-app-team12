@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+
+        <link rel="stylesheet" href="./css/review.css" />
+    </head>
+    <body>
+        <div class="review">
+            <div class="reviewTitle">리뷰</div>
+            <div class="reviewBox"></div>
+        </div>
+        <hr />
+        <div class="input">
+            <div class="inputIdPw">
+                <input type="text" id="user" placeholder="작성자" />
+                <input type="password" id="password" placeholder="비밀번호" />
+            </div>
+            <div class="inputValue">
+                <textarea type="text" id="review" placeholder="리뷰"></textarea>
+                <button onclick="setReview()">입력</button>
+            </div>
+        </div>
+        <script src="./js/review.js"></script>
+    </body>
+</html>
