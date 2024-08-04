@@ -51,9 +51,9 @@ function deleteReview(index) {
     if (deleteTemp) {
         reviewList.splice(index, 1);
         localStorage.setItem("review", JSON.stringify(reviewList));
-    }
 
-    getReview();
+        getReview();
+    }
 }
 
 window.onload = () => {
