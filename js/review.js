@@ -24,16 +24,27 @@ function getReview() {
 
 // 리뷰 저장
 function setReview() {
-    const person = {
-        user: document.getElementById("user").value,
-        password: document.getElementById("password").value,
-        review: document.getElementById("review").value,
-    };
+    let user = document.getElementById("user").value;
+    let password = document.getElementById("password").value;
+    let review = document.getElementById("review").value;
 
-    reviewList = [...reviewList, person];
-    localStorage.setItem("review", JSON.stringify(reviewList));
+    const person = { user, password, review };
 
-    getReview();
+    if (user === "") {
+        alert("작성자를 입력해주세요.");
+        return;
+    } else if (password === "") {
+        alert("비밀번호를 입력해주세요.");
+        return;
+    } else if (review === "") {
+        alert("리뷰를 입력해주세요.");
+        return;
+    } else {
+        reviewList = [...reviewList, person];
+        localStorage.setItem("review", JSON.stringify(reviewList));
+
+        getReview();
+    }
 }
 
 // 리뷰 수정하기
