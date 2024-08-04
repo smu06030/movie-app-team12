@@ -5,6 +5,7 @@ function getReview() {
     if (localStorage.length > 0) {
         reviewList = [...JSON.parse(localStorage.getItem("review"))];
     }
+
     const reviewBox = document.querySelector(".reviewBox");
     reviewBox.innerHTML = "";
     for (let i = 0; i < reviewList.length; i++) {
@@ -37,8 +38,8 @@ function setReview() {
 
 // 리뷰 수정하기
 function updateReview(index) {
-    const newReview = prompt("리뷰를 수정해주세요.", reviewList[index]["review"]);
-    reviewList[index]["review"] = newReview;
+    const updateTemp = prompt("리뷰를 수정해주세요.", reviewList[index]["review"]);
+    reviewList[index]["review"] = updateTemp;
     localStorage.setItem("review", JSON.stringify(reviewList));
 
     getReview();
@@ -46,8 +47,11 @@ function updateReview(index) {
 
 // 리뷰 삭제하기
 function deleteReview(index) {
-    reviewList.splice(index, 1);
-    localStorage.setItem("review", JSON.stringify(reviewList));
+    const deleteTemp = confirm("정말 삭제하시겠습니까?");
+    if (deleteTemp) {
+        reviewList.splice(index, 1);
+        localStorage.setItem("review", JSON.stringify(reviewList));
+    }
 
     getReview();
 }
