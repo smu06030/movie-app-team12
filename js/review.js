@@ -53,21 +53,36 @@ function setReview() {
 
 // 리뷰 수정하기
 function updateReview(index) {
-    const updateTemp = prompt("리뷰를 수정해주세요.", reviewList[index]["review"]);
-    reviewList[index]["review"] = updateTemp;
-    localStorage.setItem("review", JSON.stringify(reviewList));
+    const checkPassword = prompt("비밀번호를 입력해주세요");
 
-    getReview();
+    console.log(checkPassword);
+    if (checkPassword === reviewList[index]["password"]) {
+        const updateTemp = prompt("리뷰를 수정해주세요.", reviewList[index]["review"]);
+        reviewList[index]["review"] = updateTemp;
+        localStorage.setItem("review", JSON.stringify(reviewList));
+
+        getReview();
+    } else if (checkPassword !== null) {
+        alert("잘못된 비밀번호 입니다. 정확한 비밀번호를 입력해주세요.");
+        return;
+    }
 }
 
 // 리뷰 삭제하기
 function deleteReview(index) {
-    const deleteTemp = confirm("정말 삭제하시겠습니까?");
-    if (deleteTemp) {
-        reviewList.splice(index, 1);
-        localStorage.setItem("review", JSON.stringify(reviewList));
+    const checkPassword = prompt("비밀번호를 입력해주세요");
 
-        getReview();
+    if (checkPassword === reviewList[index]["password"]) {
+        const deleteTemp = confirm("정말 삭제하시겠습니까?");
+        if (deleteTemp) {
+            reviewList.splice(index, 1);
+            localStorage.setItem("review", JSON.stringify(reviewList));
+
+            getReview();
+        }
+    } else if (checkPassword !== null) {
+        alert("잘못된 비밀번호 입니다. 정확한 비밀번호를 입력해주세요.");
+        return;
     }
 }
 
