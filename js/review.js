@@ -44,6 +44,10 @@ function setReview() {
         localStorage.setItem("review", JSON.stringify(reviewList));
 
         getReview();
+
+        document.getElementById("user").value = "";
+        document.getElementById("password").value = "";
+        document.getElementById("review").value = "";
     }
 }
 
