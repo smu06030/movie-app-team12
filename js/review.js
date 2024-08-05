@@ -47,11 +47,20 @@ function setReview() {
     if (user === "") {
         alert("작성자를 입력해주세요.");
         return;
+    } else if (user.length < 2) {
+        alert("작성자는 최소 2글자 이상 입력해야 합니다.");
+        return;
     } else if (password === "") {
         alert("비밀번호를 입력해주세요.");
         return;
+    } else if (password.length < 4) {
+        alert("비밀번호는 최소 4글자 이상 입력해야 합니다.");
+        return;
     } else if (review === "") {
         alert("리뷰를 입력해주세요.");
+        return;
+    } else if (review.length < 10) {
+        alert("리뷰는 최소 10글자 이상 입력해야 합니다.");
         return;
     } else {
         reviewList = [...reviewList, person];
