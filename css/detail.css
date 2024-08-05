@@ -1,12 +1,15 @@
 :root {
   --width--poster500: 500px;
   --width--poster300: 300px;
-
   --width--actor180: 180px;
+
+  --color--white: #fff;
+  --color--black: #000;
+  --color--lightGray: rgba(255, 255, 255, 0.7);
 }
 
 *{
-  color: #fff; 
+  color: var(--color--white); 
 }
 
 a{
@@ -36,7 +39,7 @@ body{
 
 /* header */
 .header{
-  background-color: #000;
+  background-color: var(--color--black);
   background-image: linear-gradient(rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.09));
   padding : 0 24px;
   min-height: 64px;
@@ -116,7 +119,7 @@ body{
 
 .specs .title .koTitle{
   font-size: 2.5rem;
-  color: #fff;
+  color: var(--color--white);
 }
 
 .specs .title .enTitle {
@@ -125,7 +128,7 @@ body{
 
 .specs .title .enTitle{
   font-size: 1.5rem;
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--color--lightGray);
 }
 
 .specs .info {
@@ -134,7 +137,7 @@ body{
 }
 
 .specs .info span, .specs .director .label {
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--color--lightGray);
 }
 
 .specs .info .year::after {
@@ -163,7 +166,7 @@ body{
   font-size: 1.125rem;
 }
 .specs .rating .total {
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--color--lightGray);
 }
 
 .specs .overview, 
@@ -260,7 +263,7 @@ body{
   width: 3rem;
   height: 3rem;
   border-radius: 50px;
-  background-color: rgba(224, 224, 224, 0.6);
+  background-color: rgba(29, 29, 29, 0.9);
   border: none;
   cursor: pointer;
 }
@@ -281,7 +284,6 @@ body{
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 /* 스켈레톤 UI */
