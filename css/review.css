@@ -35,14 +35,14 @@
     display: flex;
 }
 
-.inputValue > textarea {
+.inputValue > input {
     width: 90%;
-    height: 50px;
+    height: 30px;
     margin: 10px;
 }
 
 .inputValue > button {
     width: 6%;
-    height: 55px;
+    height: 35px;
     margin: 10px;
 }
