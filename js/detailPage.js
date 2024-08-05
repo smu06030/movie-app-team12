@@ -156,13 +156,11 @@ const createMovieDetailCard = async () => {
   selectors.enTitleDiv.textContent = enTitle;
   selectors.yearDiv.textContent = date;
   selectors.runtimeDiv.textContent = `${runtime}분`;
-  selectors.runtimeDiv.textContent = `${runtime}분`;
   selectors.gradeDiv.textContent = rating;
   selectors.overviewDiv.textContent = overview;
   selectors.totalDiv.textContent = " / 10";
 
   // 배경 이미지 설정
-  selectors.mainDiv.style.backgroundImage = `url(https://image.tmdb.org/t/p/original${backdropUrl})`;
   selectors.mainDiv.style.backgroundImage = `url(https://image.tmdb.org/t/p/original${backdropUrl})`;
 
   // 영화 포스터 추가
