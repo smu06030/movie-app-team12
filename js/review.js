@@ -1,9 +1,14 @@
 let reviewList = [];
 
+const urlParams = new URLSearchParams(window.location.search); // URL query parameter 가져오기
+const movieId = urlParams.get("id"); // 매개변수 id 값 가져오기
+
+const reviewId = "review" + movieId;
+
 // 리뷰 가져오기
 function getReview() {
-    if (localStorage.length > 0) {
-        reviewList = [...JSON.parse(localStorage.getItem("review"))];
+    if (JSON.parse(localStorage.getItem(reviewId)) !== null) {
+        reviewList = [...JSON.parse(localStorage.getItem(reviewId))];
     }
 
     const reviewBox = document.querySelector(".reviewBox");
@@ -41,7 +46,7 @@ function setReview() {
         return;
     } else {
         reviewList = [...reviewList, person];
-        localStorage.setItem("review", JSON.stringify(reviewList));
+        localStorage.setItem(reviewId, JSON.stringify(reviewList));
 
         getReview();
 
@@ -59,7 +64,7 @@ function updateReview(index) {
     if (checkPassword === reviewList[index]["password"]) {
         const updateTemp = prompt("리뷰를 수정해주세요.", reviewList[index]["review"]);
         reviewList[index]["review"] = updateTemp;
-        localStorage.setItem("review", JSON.stringify(reviewList));
+        localStorage.setItem(reviewId, JSON.stringify(reviewList));
 
         getReview();
     } else if (checkPassword !== null) {
@@ -76,7 +81,7 @@ function deleteReview(index) {
         const deleteTemp = confirm("정말 삭제하시겠습니까?");
         if (deleteTemp) {
             reviewList.splice(index, 1);
-            localStorage.setItem("review", JSON.stringify(reviewList));
+            localStorage.setItem(reviewId, JSON.stringify(reviewList));
 
             getReview();
         }
