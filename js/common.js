@@ -80,35 +80,34 @@ const filterNames = (input) => {
 }
 
 // 카테고리 클릭 이벤트
-document.getElementById('popularMovies').addEventListener('click', async (e) => {
-  e.preventDefault();
-  localStorage.setItem('selectedCategory', 'popular');
-  const movies = await getMoviesByCategory('popular');
-  movieLists = formattedMovieData(movies);
-  createMovieCards(movieLists);
-});
+document.querySelectorAll('.movieCategory a').forEach(link => {
+  link.addEventListener('click', async (e) => {
+    e.preventDefault();
 
-document.getElementById('nowPlayingMovies').addEventListener('click', async (e) => {
-  e.preventDefault();
-  localStorage.setItem('selectedCategory', 'now_playing');
-  const movies = await getMoviesByCategory('now_playing');
-  movieLists = formattedMovieData(movies);
-  createMovieCards(movieLists);
-});
+    // 모든 카테고리 링크에서 active 클래스 제거
+    document.querySelectorAll('.movieCategory a').forEach(item => {
+      item.classList.remove('active');
+    });
 
-document.getElementById('upcomingMovies').addEventListener('click', async (e) => {
-  e.preventDefault();
-  localStorage.setItem('selectedCategory', 'upcoming');
-  const movies = await getMoviesByCategory('upcoming');
-  movieLists = formattedMovieData(movies);
-  createMovieCards(movieLists);
+    // 클릭된 링크에 active 클래스 추가
+    e.target.classList.add('active');
+
+    // 카테고리별 영화 데이터 가져오고 로컬스토리지에 카테고리 저장
+    const category = e.target.id;
+    localStorage.setItem('selectedCategory', category);
+    const movies = await getMoviesByCategory(category);
+    movieLists = formattedMovieData(movies);
+    createMovieCards(movieLists);
+  });
 });
 
 // 로컬스토리지에 카테고리가 저장되어 있으면 저장된 카테고리 보여주고 없으면 메인 보여주기
 const initializeMovies = async () => {
+  console.log("init");
   const selectedCategory = localStorage.getItem('selectedCategory');
 
   if (selectedCategory) {
+    document.getElementById(selectedCategory).classList.add('active');
     const movies = await getMoviesByCategory(selectedCategory);
     movieLists = formattedMovieData(movies);
     createMovieCards(movieLists);
@@ -122,6 +121,7 @@ initializeMovies();
 
 
 // 로고 클릭하면 로컬스토리지 비우기
-document.querySelector('.logo a').addEventListener('click', (e) => {
+document.querySelector('.logo div').addEventListener('click', (e) => {
   localStorage.removeItem('selectedCategory');
+  window.location.href = "/";
 });

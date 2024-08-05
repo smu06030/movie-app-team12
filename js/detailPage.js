@@ -101,4 +101,10 @@ const createMovieDetailCard = async () => {
   `).join('');
 }
 
+// 상세에서 로고 누르면 메인으로 이동하고 로컬스토리지 비우기
+document.querySelector(".logo div").addEventListener('click',() => {
+  localStorage.removeItem('selectedCategory');
+  window.location.href = "/";
+})
+
 createMovieDetailCard();
