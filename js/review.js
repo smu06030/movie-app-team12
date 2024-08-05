@@ -27,6 +27,15 @@ function getReview() {
     }
 }
 
+// 리뷰 setItem 공통함수
+function reviewSetItem() {
+    if (movieId !== null) {
+        localStorage.setItem(reviewId, JSON.stringify(reviewList));
+
+        getReview();
+    }
+}
+
 // 리뷰 저장
 function setReview() {
     let user = document.getElementById("user").value;
@@ -46,9 +55,7 @@ function setReview() {
         return;
     } else {
         reviewList = [...reviewList, person];
-        localStorage.setItem(reviewId, JSON.stringify(reviewList));
-
-        getReview();
+        reviewSetItem();
 
         document.getElementById("user").value = "";
         document.getElementById("password").value = "";
@@ -64,9 +71,7 @@ function updateReview(index) {
     if (checkPassword === reviewList[index]["password"]) {
         const updateTemp = prompt("리뷰를 수정해주세요.", reviewList[index]["review"]);
         reviewList[index]["review"] = updateTemp;
-        localStorage.setItem(reviewId, JSON.stringify(reviewList));
-
-        getReview();
+        reviewSetItem();
     } else if (checkPassword !== null) {
         alert("잘못된 비밀번호 입니다. 정확한 비밀번호를 입력해주세요.");
         return;
@@ -81,9 +86,7 @@ function deleteReview(index) {
         const deleteTemp = confirm("정말 삭제하시겠습니까?");
         if (deleteTemp) {
             reviewList.splice(index, 1);
-            localStorage.setItem(reviewId, JSON.stringify(reviewList));
-
-            getReview();
+            reviewSetItem();
         }
     } else if (checkPassword !== null) {
         alert("잘못된 비밀번호 입니다. 정확한 비밀번호를 입력해주세요.");
