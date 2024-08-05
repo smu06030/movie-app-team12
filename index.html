@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>영화 검색 사이트</title>
-  <!-- Reset css -->
-  <link rel="stylesheet" href="./css/reset.css">
-  <!-- font -->
-  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
-
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>영화 검색 사이트</title>
+    <!-- Reset css -->
+    <link rel="stylesheet" href="./css/reset.css" />
+    <!-- font -->
+    <link
+      rel="stylesheet"
+      as="style"
+      crossorigin
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+    />
   <link rel="stylesheet" href="./css/common.css">
   <script src="./js/common.js" type="module" defer></script>
 </head>
@@ -37,7 +41,15 @@
     </header>
     <!-- 영화 리스트 -->
     <main class="main">
-      <div class="mainTitle">Movies</div>
+      <div class="mainTitleSelectBox">
+        <div class="mainTitle">Movies</div>
+        <select id="selectFilterMovie">
+          <option value="star" selected>별점순</option>
+          <option value="ko">이름순(ko)</option>
+          <option value="en">이름순(en)</option>
+          <option value="releaseDate">개봉일순</option>
+        </select>
+      </div>
       <ul class="movieCards"></ul>
     </main>
   </div>

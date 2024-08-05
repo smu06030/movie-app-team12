@@ -6,23 +6,23 @@ const formatMovie = (movie) => ({
   imgUrl: movie.poster_path,
   overview: movie.overview,
   rating: movie.vote_average.toFixed(2),
-  date: movie.release_date.slice(0,4),
+  date: movie.release_date.slice(0, 4),
 });
 
-const formattedMovieData = (movies) => movies.map(formatMovie)
+const formattedMovieData = (movies) => movies.map(formatMovie);
 
 // 영화 디테일 데이터 포멧
-const formattedDetailData = (details) =>{
-  const basicData = formatMovie(details)
-  
+const formattedDetailData = (details) => {
+  const basicData = formatMovie(details);
+
   return {
     ...basicData,
     runtime: details.runtime,
     backdropUrl: details.backdrop_path,
     genres: formatGenres(details.genres),
   };
-}
+};
 
-const formatGenres = (genres) => genres.map(genre => genre.name);
+const formatGenres = (genres) => genres.map((genre) => genre.name);
 
-export {formatMovie, formattedMovieData, formattedDetailData};
+export { formatMovie, formattedMovieData, formattedDetailData };

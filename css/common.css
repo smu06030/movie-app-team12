@@ -100,11 +100,11 @@ body{
   padding: 16px 24px;
 }
 
-.main .mainTitle{
+/* .main .mainTitle{
   text-align: center;
   font-size: 1.5rem;
   font-weight: 500;
-}
+} */
 
 .main .movieCards{
   display: flex;
@@ -191,4 +191,35 @@ body{
 
 .logo {
   cursor: pointer;
+}
+.mainTitleSelectBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+}
+
+.mainTitle {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 500;
+  flex-grow: 1;
+}
+
+.sortFormSelect {
+  display: flex;
+  align-self: flex-end;
+  margin: 1rem 0;
+}
+
+#selectFilterMovie {
+  background-color: #141f29;
+  color: white;
+  border: 1px solid #969696;
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+  font-weight: bold;
+  position: absolute;
+  right: 105px;
 }

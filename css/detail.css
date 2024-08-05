@@ -1,10 +1,15 @@
 :root {
   --width--poster500: 500px;
   --width--poster300: 300px;
+  --width--actor180: 180px;
+
+  --color--white: #fff;
+  --color--black: #000;
+  --color--lightGray: rgba(255, 255, 255, 0.7);
 }
 
 *{
-  color: #fff; 
+  color: var(--color--white); 
 }
 
 a{
@@ -34,7 +39,7 @@ body{
 
 /* header */
 .header{
-  background-color: #000;
+  background-color: var(--color--black);
   background-image: linear-gradient(rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.09));
   padding : 0 24px;
   min-height: 64px;
@@ -78,25 +83,23 @@ body{
   justify-content: center;
   align-items: center;
   margin: 0 auto;
-  margin-top: 2rem;
+  margin-top: 5rem;
+  gap: 4rem;
 }
 
 .movieDetails {
   display: none;
   margin-bottom: 2rem;
-  /*flex-direction: column; /* 추가한거*/
 }
 
 .movieDetails .poster {
-  /*display: flex; /* 추가한거*/
-  /*justify-content: center; /* 추가한거*/
+  width: var(--width--poster300);
+  height: calc(var(--width--poster300) * 3 / 2);
   flex-shrink: 0;
   margin-right: 70px;
 }
 
 .movieDetails .poster img{
-  /* width: var(--width--poster);
-  height: var(--width--poster) * 3 / 2; */
   border-radius: 10px;
 }
 
@@ -104,12 +107,10 @@ body{
   display: flex;
   flex-direction: column;
   justify-content: start;
-  align-items: start; /* 바꾼거*/
-  /* text-align: center; 추가한거*/
+  align-items: start;
   max-width: 600px;
   flex-grow: 1;
   width: 100%;
-  /*margin-top: 0.5rem;  바꾼거 */
 }
 
 .specs .title {
@@ -118,7 +119,7 @@ body{
 
 .specs .title .koTitle{
   font-size: 2.5rem;
-  color: #fff;
+  color: var(--color--white);
 }
 
 .specs .title .enTitle {
@@ -127,7 +128,7 @@ body{
 
 .specs .title .enTitle{
   font-size: 1.5rem;
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--color--lightGray);
 }
 
 .specs .info {
@@ -135,12 +136,20 @@ body{
   margin-top: .5rem;
 }
 
-.specs .info span {
-  color: rgba(255, 255, 255, 0.7);
+.specs .info span, .specs .director .label {
+  color: var(--color--lightGray);
 }
 
 .specs .info .year::after {
   content: "ㆍ";
+}
+
+.specs .director {
+  margin-top: .5rem;
+}
+
+.specs .director .name {
+  font-weight: 700;
 }
 
 .specs .rating {
@@ -157,7 +166,7 @@ body{
   font-size: 1.125rem;
 }
 .specs .rating .total {
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--color--lightGray);
 }
 
 .specs .overview, 
@@ -196,6 +205,85 @@ body{
   justify-content: center;
   align-items: center;
   cursor: pointer;
+}
+
+.actorContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top :2rem;
+  width: 970px;
+}
+
+.actorTitle{
+  width: 100%;
+  margin-bottom: .5rem;
+}
+
+.actors {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  overflow: hidden;
+  position: relative;
+}
+
+.slider{
+  display: flex;
+  align-items: baseline;
+  transition: transform 0.3s ease;
+}
+
+.actor {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 180px;
+  margin-right: 1rem;
+}
+
+.actor img {
+  width: var(--width--actor180);
+  height: calc(var(--width--actor180) * 3 / 2);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.actor span{
+  margin-top: 1rem;
+}
+
+#prevButton, #nextButton {
+  position: absolute;
+  background-color: transparent;
+  padding: 1rem 1rem;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50px;
+  background-color: rgba(29, 29, 29, 0.9);
+  border: none;
+  cursor: pointer;
+}
+
+#prevButton{
+  top: 45%;
+  transform: translateY(-45%);
+}
+
+#nextButton{
+  top: 45%;
+  right: 0;
+  transform: translateY(-45%);
+}
+
+#prevButton img, #nextButton img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 /* 스켈레톤 UI */
@@ -270,8 +358,13 @@ body{
   margin-bottom: .5rem;
 }
 .skeleton.overview {
-  width: 100%;
+  width: 600px;
   height: 220px;
+  margin-bottom: .5rem;
+}
+.skeleton.actor {
+  width: var(--width--actor180);
+  height: calc(var(--width--actor180) * 3 / 2);
   margin-bottom: .5rem;
 }
 
