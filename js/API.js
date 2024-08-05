@@ -7,12 +7,12 @@ const options = {
   method: 'GET',
   headers: {
     accept: 'application/json',
-    Authorization: `Bearer ${ API_KEY }`
+    Authorization: `Bearer ${API_KEY}`
   }
 };
 
-const generateUrls = (type, { movieId = null, page=1 } = {}) => {
-  switch(type){
+const generateUrls = (type, { movieId = null, page = 1 } = {}) => {
+  switch (type) {
     case 'top_rated':
       return `${baseUrl}/movie/top_rated?language=${baseLanguage}&page=${page}`;
     case 'detail':
@@ -22,7 +22,7 @@ const generateUrls = (type, { movieId = null, page=1 } = {}) => {
 
 const getTopLated = async (type) => {
   const url = generateUrls(type)
-  try{
+  try {
     const response = await fetch(url, options);
     const json = await response.json();
 
@@ -34,16 +34,16 @@ const getTopLated = async (type) => {
 
 const getMovieDetail = async (type, movieId) => {
   const url = generateUrls(type, { movieId })
-  try{
+  try {
     const response = await fetch(url, options);
-    
-    if(response.status === 200){
+
+    if (response.status === 200) {
       const json = await response.json();
       return json;
-    }else{
+    } else {
       throw new Error();
     }
-    
+
   } catch (err) {
     console.error(err)
   }

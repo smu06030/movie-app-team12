@@ -1,5 +1,5 @@
 import { getMovieDetail } from './API.js';
-import { formattedDetailData }  from './formatMovie.js';
+import { formattedDetailData } from './formatMovie.js';
 
 const urlParams = new URLSearchParams(window.location.search); // URL query parameter 가져오기
 const movieId = urlParams.get('id'); // 매개변수 id 값 가져오기
@@ -8,17 +8,17 @@ const movieDetailData = [];
 
 // 영화 디테일 정보 가져오기
 const fetchMovieDetail = async () => {
-  try{
+  try {
     const response = await getMovieDetail('detail', movieId);
-    
-    if(response){
+
+    if (response) {
       movieDetailData.push(formattedDetailData(response))
-    }else{
+    } else {
       throw new Error("영화 디테일 정보를 가져오는데 실패했습니다.");
     }
 
     return movieDetailData;
-  } catch (err){
+  } catch (err) {
     console.error(err)
   }
 }
@@ -58,16 +58,16 @@ const createMovieDetailCard = async () => {
   selectors.movieDetails.style.display = 'flex';
 
   const {
-    id, 
-    koTitle, 
-    enTitle, 
-    genres, 
-    imgUrl, 
-    backdropUrl, 
-    overview, 
-    date, 
-    rating, 
-    runtime 
+    id,
+    koTitle,
+    enTitle,
+    genres,
+    imgUrl,
+    backdropUrl,
+    overview,
+    date,
+    rating,
+    runtime
   } = movieDetail[0];
 
 
@@ -75,17 +75,17 @@ const createMovieDetailCard = async () => {
   selectors.koTitleDiv.textContent = koTitle;
   selectors.enTitleDiv.textContent = enTitle;
   selectors.yearDiv.textContent = date;
-  selectors.runtimeDiv.textContent = `${ runtime }분`;
+  selectors.runtimeDiv.textContent = `${runtime}분`;
   selectors.gradeDiv.textContent = rating;
   selectors.overviewDiv.textContent = overview;
   selectors.totalDiv.textContent = ' / 10';
 
   // 배경 이미지 설정
-  selectors.mainDiv.style.backgroundImage = `url(https://image.tmdb.org/t/p/original${ backdropUrl })`;
+  selectors.mainDiv.style.backgroundImage = `url(https://image.tmdb.org/t/p/original${backdropUrl})`;
 
   // 영화 포스터 추가
   const img = document.createElement('img');
-  img.src = `https://image.tmdb.org/t/p/w300${ imgUrl }`;
+  img.src = `https://image.tmdb.org/t/p/w300${imgUrl}`;
   img.alt = koTitle
   selectors.posterDiv.appendChild(img)
 
