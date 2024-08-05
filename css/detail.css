@@ -1,82 +1,108 @@
 :root {
-  --width--poster500: 500px;
-  --width--poster300: 300px;
-  --width--actor180: 180px;
-
-  --color--white: #fff;
-  --color--black: #000;
-  --color--lightGray: rgba(255, 255, 255, 0.7);
+  --color-header-background: #060f16;
+  --color-text: #fff;
+  --color-border: #5c5c5c;
+  --color-hover: #1a2b36;
+  --color-shadow: rgba(43, 60, 75, 0.4);
+  --font-size-base: 1rem;
+  --poster-width: 300px;
+}
+* {
+  color: #fff;
+  margin: 0; /* 기본 마진 제거 */
+  padding: 0; /* 기본 패딩 제거 */
 }
 
-*{
-  color: var(--color--white); 
-}
-
-a{
+a {
   text-decoration: none;
 }
 
-ul{
+ul {
   padding: 0;
 }
 
-li{
+li {
   list-style: none;
 }
 
-body{
+body {
   font-family: "Pretendard", sans-serif;
-  background-color: #141f29; 
+  background-color: #141f29;
   font-weight: 400;
   font-size: 1rem;
-  min-width: 640px;
+  min-width: 480px;
 }
 
-.container{
+/* container */
+.container {
   margin: 0 auto;
   padding: 0;
 }
 
 /* header */
-.header{
-  background-color: var(--color--black);
-  background-image: linear-gradient(rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.09));
-  padding : 0 24px;
+.header {
+  padding: 24px 24px;
   min-height: 64px;
   width: 100%;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
+  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+    0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 }
 
-.header .logo{
+.header .logo {
   font-size: 1.2rem;
   font-weight: 700;
 }
-
 /* main */
-.main{
+.main {
   padding: 16px 24px;
   width: 100%;
-  height: 100%;
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
   position: relative;
-  isolation: isolate;
 }
 
 .main::after {
-  content: '';
+  content: "";
   position: absolute;
-  background: rgb(29, 29, 29);
-  z-index: -1;
-  inset: 0;
-  opacity: 0.9;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 15, 15, 0.672);
+}
+main * {
+  z-index: 1;
 }
 
+/* movieCategory */
+.movieCategory {
+  background-color: #000;
+  padding: 10px 10px;
+}
+
+.movieCategory ul {
+  display: flex;
+  gap: 1rem;
+  /* 화면 크기에 따라 줄 바꿈 */
+}
+
+.movieCategory a {
+  color: #ffffff86;
+  font-weight: 600;
+}
+
+.movieCategory a.hover {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* movieDetails */
 .movieDetailWrapper {
   display: flex;
   flex-direction: column;
@@ -88,28 +114,33 @@ body{
 }
 
 .movieDetails {
-  display: none;
-  margin-bottom: 2rem;
+  display: flex; /* 가로 방향으로 배치 */
+  align-items: flex-start; /* 상단 정렬 */
+  justify-content: center; /* 중앙 정렬 */
+  margin: 2rem auto;
+  padding: 20px;
+  position: relative; /* 자식 요소에 대한 위치 기준 설정 */
+  max-width: 100%; /* 최대 너비 설정 */
+  box-sizing: border-box; /* 패딩과 테두리를 포함한 전체 너비 설정 */
 }
 
 .movieDetails .poster {
-  width: var(--width--poster300);
-  height: calc(var(--width--poster300) * 3 / 2);
   flex-shrink: 0;
-  margin-right: 70px;
+  margin-right: 50px;
+  margin-left: 50px;
 }
 
-.movieDetails .poster img{
+.movieDetails .poster img {
+  display: block;
+  width: var(--width--poster300);
+  height: calc(var(--width--poster300) * 3 / 2);
   border-radius: 10px;
 }
 
 .movieDetails .specs {
   display: flex;
-  flex-direction: column;
-  justify-content: start;
-  align-items: start;
-  max-width: 600px;
-  flex-grow: 1;
+  flex-direction: column; /* 세로 방향으로 배치 */
+  max-width: 500px;
   width: 100%;
 }
 
@@ -117,69 +148,58 @@ body{
   font-weight: 700;
 }
 
-.specs .title .koTitle{
+.specs .title .koTitle {
   font-size: 2.5rem;
-  color: var(--color--white);
+  color: #fff;
 }
 
 .specs .title .enTitle {
-  margin-top: -0.825rem;
-}
-
-.specs .title .enTitle{
-  font-size: 1.5rem;
-  color: var(--color--lightGray);
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 0;
 }
 
 .specs .info {
   display: flex;
-  margin-top: .5rem;
+  margin-top: 0.5rem;
 }
 
-.specs .info span, .specs .director .label {
-  color: var(--color--lightGray);
+.specs .info span {
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .specs .info .year::after {
   content: "ㆍ";
 }
 
-.specs .director {
-  margin-top: .5rem;
-}
-
-.specs .director .name {
-  font-weight: 700;
-}
-
 .specs .rating {
   display: flex;
-  justify-content: start;
-  align-items: center;
   margin: 1rem 0;
 }
+
 .specs .rating img {
   width: 24px;
   margin-right: 4px;
 }
+
 .specs .rating span {
   font-size: 1.125rem;
 }
+
 .specs .rating .total {
-  color: var(--color--lightGray);
+  color: rgba(255, 255, 255, 0.7);
 }
 
-.specs .overview, 
+.specs .overview,
 .specs .overview h2,
 .specs .genres h2 {
-  margin-bottom: 1rem;
+  line-height: 180%;
 }
 
 .specs .overview p {
   display: -webkit-box;
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: wrap;
   -webkit-line-clamp: 5;
   -webkit-box-orient: vertical;
   line-height: 1.7;
@@ -187,7 +207,7 @@ body{
 
 .specs .genre {
   display: flex;
-  margin-bottom: .5rem;
+  margin: 1rem 0;
 }
 
 .genreContainer {
@@ -195,7 +215,7 @@ body{
   padding: 0.5rem 1rem;
   margin-right: 1rem;
   border-radius: 1rem;
-  background-color: rgba(185, 185, 185, 0.6);
+  background-color: rgba(81, 81, 81, 0.6);
   font-weight: bold;
   font-size: 0.825rem;
   line-height: 0.8rem;
@@ -207,94 +227,14 @@ body{
   cursor: pointer;
 }
 
-.actorContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top :2rem;
-  width: 970px;
-}
-
-.actorTitle{
-  width: 100%;
-  margin-bottom: .5rem;
-}
-
-.actors {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  overflow: hidden;
-  position: relative;
-}
-
-.slider{
-  display: flex;
-  align-items: baseline;
-  transition: transform 0.3s ease;
-}
-
-.actor {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-width: 180px;
-  margin-right: 1rem;
-}
-
-.actor img {
-  width: var(--width--actor180);
-  height: calc(var(--width--actor180) * 3 / 2);
-  border-radius: 10px;
-  cursor: pointer;
-}
-
-.actor span{
-  margin-top: 1rem;
-}
-
-#prevButton, #nextButton {
-  position: absolute;
-  background-color: transparent;
-  padding: 1rem 1rem;
-  width: 3rem;
-  height: 3rem;
-  border-radius: 50px;
-  background-color: rgba(29, 29, 29, 0.9);
-  border: none;
-  cursor: pointer;
-}
-
-#prevButton{
-  top: 45%;
-  transform: translateY(-45%);
-}
-
-#nextButton{
-  top: 45%;
-  right: 0;
-  transform: translateY(-45%);
-}
-
-#prevButton img, #nextButton img {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
 /* 스켈레톤 UI */
-
 .skeletons {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: start;
   margin: 0 auto;
-} 
+}
 
 .skeleton.poster {
   width: var(--width--poster300);
@@ -302,7 +242,7 @@ body{
   flex-shrink: 0;
 }
 
-.skeletons .specs{
+.skeletons .specs {
   flex-grow: 0;
 }
 
@@ -312,19 +252,21 @@ body{
   width: 100%;
   height: 100%;
   border-radius: 1rem;
-  background-color: #1C212E;
+  background-color: #1c212e;
 }
-.skeleton::after{
+
+.skeleton::after {
   content: "";
   width: 100%;
   height: 100%;
   position: absolute;
   top: 0;
   left: 0;
-  background-image: linear-gradient(270deg,
-  rgba(255,255,255,0),
-  rgba(255,255,255,.2),
-  rgba(255,255,255,0)
+  background-image: linear-gradient(
+    270deg,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0)
   );
   border-radius: 1rem;
   transform: translateX(-100%);
@@ -334,41 +276,128 @@ body{
 .skeleton.genres {
   width: 150px;
   height: 1.5rem;
-  margin-bottom: .825rem;
+  margin-bottom: 0.825rem;
 }
+
 .skeleton.titleK {
   width: 400px;
   height: 3rem;
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
   border-radius: 2rem;
 }
+
 .skeleton.titleE {
   width: 200px;
   height: 2rem;
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
 }
+
 .skeleton.info {
   width: 100px;
   height: 1.5rem;
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
 }
+
 .skeleton.rating {
   width: 70px;
   height: 1.5rem;
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
 }
+
 .skeleton.overview {
-  width: 600px;
+  width: 100%;
   height: 220px;
-  margin-bottom: .5rem;
-}
-.skeleton.actor {
-  width: var(--width--actor180);
-  height: calc(var(--width--actor180) * 3 / 2);
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
 }
 
 @keyframes load {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* 모바일 쿼리: 화면 폭이 768px 이하인 경우 */
+@media (max-width: 768px) {
+  .header .searchForm {
+    display: flex;
+    align-items: center;
+    border: 0;
+    border-bottom: 1px solid #969696;
+    position: center;
+    margin: 20px 0px 20px 0px;
+    width: 100%;
+  }
+  .header .searchForm input {
+    width: 100%;
+    background-color: transparent;
+    outline: none;
+    border: 0;
+  }
+  .movieCategory ul {
+    margin-top: 20px;
+    flex-direction: column; /* 세로 방향으로 배치 */
+    align-items: flex-start;
+  }
+
+  .movieCategory ul li {
+    margin-bottom: 5px; /* 항목 간 여백 추가 */
+  }
+
+  .movieDetails {
+    flex-direction: column; /* 세로 방향으로 배치 */
+    display: flex;
+    align-items: center;
+    margin: 0 auto; /* 수평 가운데 정렬을 위한 auto 마진 */
+    padding: 20px;
+    max-width: 100%; /* 최대 너비를 부모 컨테이너에 맞게 조정 */
+    box-sizing: border-box; /* 패딩과 테두리가 요소의 전체 너비에 포함되도록 설정 */
+  }
+
+  .movieDetails .poster {
+    margin: 0; /* 여백 제거 */
+    margin-bottom: 2rem; /* 포스터와 정보 사이 여백 추가 */
+  }
+
+  .movieDetails .poster img {
+    width: 80vw; /* 포스터 너비를 화면 너비에 맞추어 조정 */
+    height: auto; /* 높이는 자동으로 조정 */
+  }
+
+  .movieDetails .specs {
+    text-align: center;
+    max-width: 100%; /* 최대 너비를 100%로 설정 */
+  }
+
+  .specs .title .koTitle {
+    font-size: 1.875rem; /* 글자 크기 조정 */
+  }
+
+  .specs .title .enTitle {
+    font-size: 1.2rem; /* 글자 크기 조정 */
+    margin-top: 1rem; /* 제목 간격 조정 */
+  }
+
+  .specs .info {
+    margin: 0.7rem auto; /* 세로 방향으로 배치 */
+    margin-top: 0.7rem; /* 여백 조정 */
+  }
+
+  .specs .rating {
+    margin: 0.7rem auto;
+  }
+
+  .specs .overview p {
+    -webkit-line-clamp: 3; /* 줄 수를 줄여서 텍스트 길이 조정 */
+    line-height: 200%; /* 줄 높이 조정 */
+  }
+  .specs .genre {
+    justify-content: center;
+  }
+  .specs .genreContainer {
+    font-size: 0.75rem; /* 폰트 크기 조정 */
+    padding: 0.25rem 0.5rem; /* 패딩 조정 */
+  }
 }
