@@ -1,5 +1,5 @@
-import { getTopLated } from './API.js';
-import { formattedMovieData } from './formatMovie.js';
+import { getTopLated } from "./API.js";
+import { formattedMovieData } from "./formatMovie.js";
 
 let movieLists = [];
 let filteredMovies = [];
@@ -23,7 +23,7 @@ const fetchMovieData = async () => {
 
 // 영화 카드 그리기
 const createMovieCards = async (filteredMovies = null) => {
-  const movieLists = filteredMovies || await fetchMovieData();
+  const movieLists = filteredMovies || (await fetchMovieData());
 
   const ul = document.querySelector('.movieCards');
   ul.innerHTML = '';
@@ -56,14 +56,13 @@ const createMovieCards = async (filteredMovies = null) => {
       </a>
     `;
     ul.appendChild(li);
-
-  })
-}
+  });
+};
 
 // 버튼 클릭 or 엔터 입력 시 영화 검색
-const form = document.getElementById('searchForm');
+const form = document.getElementById("searchForm");
 
-form.addEventListener('submit', (e) => {
+form.addEventListener("submit", (e) => {
   e.preventDefault();
 
   const input = document.getElementById('search').value.trim()
