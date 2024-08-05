@@ -41,7 +41,7 @@ const fetchActorsData = async () => {
 
 // UI 요소 선택자
 const selectors = {
-  skeletons: document.querySelector(".skeletons.movieDetails"),
+  skeletonDetail: document.querySelector(".skeletons.movieDetails"),
   movieDetails: document.querySelector(".movieDetails:not(.skeletons)"),
   genreList: document.querySelector(".genre"),
   posterDiv: document.querySelector(".movieDetails:not(.skeletons) .poster"),
@@ -56,38 +56,85 @@ const selectors = {
   starImg: document.querySelector(".star"),
   directorLabelDiv: document.querySelector(".director .label"),
   directorNameDiv: document.querySelector(".director .name"),
+  skeletonActor: document.querySelector(".skeletons.actorContainer"),
+  actorContainer: document.querySelector(".actorContainer:not(.skeletons)"),
+  actorTitleDiv: document.querySelector(".actorContainer .actorTitle h2"),
+  actorsDiv: document.querySelector(".actorContainer .actors"),
+  sliderDiv: document.querySelector(".actorContainer .actors .slider"),
+  prevButton: document.getElementById('prevButton'),
+  nextButton: document.getElementById('nextButton'),
 };
 
 // 출연진 이미지 그리기
 const createActorsImage = async () => {
+  // 데이터가 로드되기 전 스켈레톤 UI 보여줌
+  selectors.skeletonActor.style.display = "flex";
+  selectors.actorContainer.style.display = "none";
+
   const actors = await fetchActorsData();
+
+  if (!actors || actors.length === 0) {
+    console.log("들어온 출연진 데이터가 없습니다.");
+    return;
+  }
+
   const IMAGE_LENGTH = 15;
 
-  console.log(actors);
-  //profile_path
-
-  // 1. 출연진 이미지 필터
-  const actorImages = actors[0].cast
+  // 1. 출연진 이름, 사진
+  const actorInfo = actors[0].cast
     .filter((_, index) => index < IMAGE_LENGTH)
-    .map((actor) => actor.profile_path);
+    .map((actor) => ({
+      name: actor.name,
+      profile_path: actor.profile_path,
+    }));
+    
+  selectors.actorTitleDiv.textContent = "출연진";
 
-  // 2. 영화 감독 이름 필터
+  const actorSlider = actorInfo.map((actor) => createActorContainer(actor));
+  actorSlider.forEach((actor) => selectors.sliderDiv.appendChild(actor));
+
+  selectors.prevButton.innerHTML = '<img src="./images/navigate_prev.png" alt="Previous">';
+  selectors.nextButton.innerHTML = '<img src="./images/navigate_next.png" alt="Next">';
+  
+  // 2. 영화 감독 이름
   const director = actors[0].crew.find((member) => member.job === "Director");
 
   selectors.directorLabelDiv.textContent = "감독 : ";
   selectors.directorNameDiv.textContent = `${director.name}`;
 };
 
+// 출연진 컨테이너 생성
+const createActorContainer = (actor) => {
+  const profilePath = actor.profile_path
+    ? `https://image.tmdb.org/t/p/w300${actor.profile_path}`
+    : './images/default_profile.png';
+
+  const actorDiv = document.createElement('div');
+  actorDiv.classList.add('actor');
+  
+  const actorImg = document.createElement('img');
+  actorImg.src = profilePath;
+  actorImg.alt = actor.name;
+  
+  const actorName = document.createElement('span');
+  actorName.textContent = actor.name;
+
+  actorDiv.appendChild(actorImg);
+  actorDiv.appendChild(actorName);
+
+  return actorDiv;
+};
+
 // 영화 디테일 그리기
 const createMovieDetailCard = async () => {
   // 데이터가 로드되기 전 스켈레톤 UI 보여줌
-  selectors.skeletons.style.display = "flex";
+  selectors.skeletonDetail.style.display = "flex";
   selectors.movieDetails.style.display = "none";
 
   const movieDetail = await fetchMovieDetail();
 
   if (!movieDetail || movieDetail.length === 0) {
-    console.log("들어온 데이터가 없습니다.");
+    console.log("들어온 detail 데이터가 없습니다.");
     return;
   }
 
@@ -126,7 +173,7 @@ const createMovieDetailCard = async () => {
   selectors.starImg.src = "https://i.ibb.co/yFS3gHB/star.png";
   selectors.starImg.alt = "별";
 
-  // 장르 리스트 업데이트
+  // 장르 리스트 추가
   selectors.genreList.innerHTML = genres
     .map(
       (genre) => `
@@ -136,12 +183,6 @@ const createMovieDetailCard = async () => {
   `
     )
     .join("");
-
-  // 데이터가 로드되면 스켈레톤 UI 숨김
-  checkImagesLoaded(() => {
-    selectors.skeletons.style.display = "none";
-    selectors.movieDetails.style.display = "flex";
-  });
 };
 
 // 모든 이미지 로드 완료 확인
@@ -149,11 +190,22 @@ const checkImagesLoaded = (callback) => {
   const images = document.querySelectorAll("img");
 
   let loadedCount = 0;
+  let failedCount = 0;
+
   const totalImages = images.length;
 
-  const imageLoadHandler = () => {
-    loadedCount++;
-    if (loadedCount === totalImages) {
+  const imageLoadHandler = (event) => {
+    if (!event) {
+      loadedCount++;
+    } else {
+      if (event.type === "load") {
+        loadedCount++;
+      } else {
+        failedCount++;
+      }
+    }
+
+    if (loadedCount + failedCount === totalImages) {
       callback();
     }
   };
@@ -163,14 +215,53 @@ const checkImagesLoaded = (callback) => {
       imageLoadHandler();
     } else {
       image.addEventListener("load", imageLoadHandler);
+      image.addEventListener("error", imageLoadHandler);
     }
   });
 };
 
-document.addEventListener("DOMContentLoaded", () => {
-  // 영화 상세 페이지 그리기
-  createMovieDetailCard();
 
-  // 출연진 이미지 그리기
-  createActorsImage();
+// 이미지 next, prev 이벤트
+let currentIndex = 0;
+let actors;
+let totalActors;
+let slider;
+
+const nextSlide = () => {
+  currentIndex == totalActors - 5 ? (currentIndex = 0) : currentIndex++;
+  updateSlider();
+}
+
+const prevSlide = () => {
+  currentIndex == 0 ? (currentIndex = totalActors - 5) : currentIndex--;
+  updateSlider();
+}
+
+const updateSlider = () => {
+  const slideWidth = actors[0].clientWidth; // 한 이미지의 너비
+  const totalWidth = slideWidth * totalActors;
+  slider.style.width = `${totalWidth}px`;
+  slider.style.transform = `translateX(-${(slideWidth * currentIndex)+(currentIndex * 16)}px)`;
+}
+
+// 로드 시
+document.addEventListener("DOMContentLoaded", () => {
+  Promise.all([createMovieDetailCard(), createActorsImage()]).then(() => {
+
+    actors = document.querySelectorAll('.actor:not(.skeleton)');
+    totalActors = actors.length;
+    slider = document.querySelector('.slider');
+    
+    document.getElementById('nextButton').addEventListener('click', nextSlide);
+    document.getElementById('prevButton').addEventListener('click', prevSlide);
+
+    checkImagesLoaded(() => {
+      // 데이터가 로드되면 스켈레톤 UI 숨김
+      selectors.skeletonDetail.style.display = "none";
+      selectors.movieDetails.style.display = "flex";
+      
+      selectors.skeletonActor.style.display = "none";
+      selectors.actorContainer.style.display = "flex";  
+    });
+  });
 });
