@@ -42,13 +42,14 @@ const getMovieDetail = async (type, movieId) => {
     if (response.status === 200) {
       const json = await response.json();
       return json;
+
     } else {
       throw new Error();
     }
   } catch (err) {
     console.error(err);
   }
-};
+}
 
 const getCredits = async (type, movieId) => {
   const url = generateUrls(type, { movieId });
