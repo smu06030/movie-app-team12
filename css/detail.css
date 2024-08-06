@@ -102,6 +102,7 @@ body {
   flex-direction: column;
   margin: 0 auto;
   margin-top: 5rem;
+  gap: 6rem;
 }
 
 .movieDetails {
@@ -127,7 +128,7 @@ body {
 .movieDetails .specs {
   display: flex;
   flex-direction: column; /* 세로 방향으로 배치 */
-  max-width: 500px;
+  max-width: 600px;
   width: 100%;
 }
 
@@ -184,7 +185,7 @@ body {
 .specs .overview h2,
 .specs .genres h2 {
   line-height: 200%;
-  margin-bottom: 5rem;
+  /* margin-bottom: 5rem; */
 }
 
 .specs .overview p {
@@ -398,4 +399,73 @@ body {
 
 .logo {
   cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .header .logo {
+    font-size: 2rem;
+    font-weight: 700;
+  }
+
+  .movieCategory {
+    margin-top: 1rem; /* 항목 간 여백 추가 */
+    margin-bottom: -0.3rem;
+  }
+
+  .movieDetails {
+    flex-direction: column; /* 세로 방향으로 배치 */
+    display: flex;
+    align-items: center;
+    margin: 0 auto; /* 수평 가운데 정렬을 위한 auto 마진 */
+    max-width: 100%; /* 최대 너비를 부모 컨테이너에 맞게 조정 */
+    box-sizing: border-box; /* 패딩과 테두리가 요소의 전체 너비에 포함되도록 설정 */
+  }
+
+  .movieDetails .poster {
+    margin: 0; /* 여백 제거 */
+    margin-bottom: 2rem; /* 포스터와 정보 사이 여백 추가 */
+  }
+
+  .movieDetails .poster img {
+    width: 80vw; /* 포스터 너비를 화면 너비에 맞추어 조정 */
+    height: auto; /* 높이는 자동으로 조정 */
+  }
+
+  .movieDetails .specs {
+    text-align: center;
+    max-width: 100%; /* 최대 너비를 100%로 설정 */
+  }
+
+  .specs .title .koTitle {
+    text-align: center;
+    font-size: 1.875rem; /* 글자 크기 조정 */
+  }
+
+  .specs .title .enTitle {
+    text-align: center;
+    font-size: 1.2rem; /* 글자 크기 조정 */
+    margin-top: rem; /* 제목 간격 조정 */
+  }
+
+  .specs .info {
+    justify-content: center;
+    margin-top: 0.5rem; /* 여백 조정 */
+  }
+
+  .specs .rating {
+    margin-bottom: 1rem;
+    justify-content: center;
+  }
+
+  .specs .overview p {
+    -webkit-line-clamp: 4; /* 줄 수를 줄여서 텍스트 길이 조정 */
+    line-height: 200%; /* 줄 높이 조정 */
+  }
+  .specs .genre {
+    justify-content: center;
+    margin-top: -1rem;
+  }
+  .specs .genreContainer {
+    font-size: 0.75rem; /* 폰트 크기 조정 */
+  }
 }

@@ -1,7 +1,65 @@
+body[data-theme='light-mode'] {
+  --all-color: #000;
+  --color-text: #000;
+
+  --body-background: #FDFDFD;
+
+  --header-background: #E7E7E7;
+  --header-box-shadow-0: rgba(0, 0, 0, 0.013);
+  --header-box-shadow-1: rgba(0, 0, 0, 0.07);
+  --header-box-shadow-2: rgba(0, 0, 0, 0);
+
+  --searchForm-border-bottom: #969696;
+  --searchForm-button-hover: rgba(0, 0, 0, 0.04);
+
+  --movieCategory-a: #646464;
+
+  --movieWrapper-box-shadow: rgba(43, 60, 75, 0.4);
+  --movieWrapper-background: #e3e3e3;
+
+  --movie-color: rgba(0,0,0,0.5);
+
+  --selectFilterMovie-background: #0000003f;
+  --selectFilterMovie-border: #5c5c5c;
+  --selectFilterMovie-focus-border: #ffffff9f;
+  --selectFilterMovie-focus-background: #ffffff14;
+  --selectFilterMovie-hover-border: #ffffff18;
+  --selectFilterMovie-hover-background: #00000014;
+}
+
+body[data-theme='dark-mode'] {
+  --all-color: #fff;
+  --color-text: #fff;
+
+  --body-background: #141f29;
+
+  --header-background: #060f16;
+  --header-box-shadow-0: rgba(255, 255, 255, 0.013);
+  --header-box-shadow-1: rgba(255, 255, 255, 0.07);
+  --header-box-shadow-2: rgba(255, 255, 255, 0);
+
+  --searchForm-border-bottom: #969696;
+  --searchForm-button-hover: #ffffff2f;
+
+  --movieCategory-a: #ffffff84;
+
+  --movieWrapper-box-shadow: rgba(43, 60, 75, 0.4);
+  --movieWrapper-background: #2b3c4b;
+
+  --movie-color: rgba(255, 255, 255, 0.7);
+
+  --selectFilterMovie-background: #0000003f;
+  --selectFilterMovie-border: #5c5c5c;
+  --selectFilterMovie-focus-border: #ffffff9f;
+  --selectFilterMovie-focus-background: #ffffff14;
+  --selectFilterMovie-hover-border: #ffffff18;
+  --selectFilterMovie-hover-background: #00000014;
+}
+
 * {
-  color: #ffffff;
-  margin: 0; /* 기본 마진 제거 */
-  padding: 0; /* 기본 패딩 제거 */
+    color: var(--all-color);
+    margin: 0; /* 기본 마진 제거 */
+    padding: 0; /* 기본 패딩 제거 */
 }
 
 a {
@@ -17,11 +75,11 @@ li {
 }
 
 body {
-  font-family: "Pretendard", sans-serif;
-  background-color: #141f29;
-  font-weight: 400;
-  font-size: 1rem;
-  /* min-width: 640px;  최소 너비 모바일 사이즈 고려 */
+    font-family: "Pretendard", sans-serif;
+    background-color: var(--body-background);
+    font-weight: 400;
+    font-size: 1rem;
+    /* min-width: 640px;  최소 너비 모바일 사이즈 고려 */
 }
 
 .container {
@@ -32,17 +90,15 @@ body {
 /* header */
 
 .header {
-  padding: 24px 24px;
-  min-height: 64px;
-  width: 100%;
-  display: flex;
-  /* background-color: #060f16; */
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  box-shadow: 0px 2px 4px -1px rgba(255, 255, 255, 0.013),
-    0px 4px 5px 0px rgba(255, 255, 255, 0.07),
-    0px 1px 10px 0px rgba(255, 255, 255, 0);
+    padding: 24px 24px;
+    min-height: 64px;
+    width: 100%;
+    display: flex;
+    background-color: var(--header-background);
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0px 2px 4px -1px var(--header-box-shadow-0), 0px 4px 5px 0px var(--header-box-shadow-1), 0px 1px 10px 0px var(--header-box-shadow-2);
 }
 
 .header .logo {
@@ -51,18 +107,18 @@ body {
 }
 
 .header .searchForm {
-  display: flex;
-  align-items: center;
-  border: 0;
-  border-bottom: 1px solid #969696;
-  width: 400px;
-  position: relative;
-  left: 6%;
+    display: flex;
+    align-items: center;
+    border: 0;
+    border-bottom: 1px solid var(--searchForm-border-bottom);
+    width: 400px;
+    position: relative;
+    left: 6%;
 }
 
 .header .searchForm:hover {
-  border-bottom: 1px solid white;
-  transition: all 0.3s;
+    border-bottom: 1px solid var(--color-text);
+    transition: all 0.3s;
 }
 
 .header .searchForm input {
@@ -79,12 +135,12 @@ body {
 }
 
 .header .searchForm button:hover {
-  border-radius: 100%;
-  background-color: #ffffff2f;
+    border-radius: 100%;
+    background-color: var(--searchForm-button-hover);
 }
 
-.header .searchForm button img {
-  width: 22px;
+.header .searchForm button > img {
+    width: 22px;
 }
 
 /* movieCategory */
@@ -93,8 +149,10 @@ body {
 }
 
 .movieCategory ul {
-  display: flex;
-  gap: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
 }
 
 .movieCategory ul li {
@@ -102,14 +160,40 @@ body {
 }
 
 .movieCategory a {
-  color: #ffffff84;
-  font-weight: 600;
-  font-size: 1rem; /* 기본 폰트 크기 설정 */
-  transition: color 0.1s;
+    color: var(--movieCategory-a);
+    font-weight: 600;
+    font-size: 1rem; /* 기본 폰트 크기 설정 */
+    transition: color 0.1s;
 }
 .movieCategory a:hover {
-  color: #ffffff; /* 호버 시 색상 변경 */
+    color: var(--color-text); /* 호버 시 색상 변경 */
 }
+
+.movieCategory ul li a.active {
+  background-color: #e0e0e0;
+  border: 2px solid #333;
+  padding: 2px;
+  border-radius: 5px;
+  color: #ff6600;
+  font-weight: bold;
+}
+
+.darkmode {
+  width: 30px;
+  height: 30px;
+}
+.darkmodeBtn{
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+}
+
+.darkmodeBtn:hover {
+  border-radius: 100%;
+  background-color: var(--searchForm-button-hover);
+}
+
 /* main */
 
 .main {
@@ -130,11 +214,11 @@ body {
 }
 
 .main ul li .movieWrapper:hover {
-  border-radius: 0.3rem;
-  transition: all 0.3s;
-  filter: brightness(110%);
-  box-shadow: 0 0 20px 5px rgba(43, 60, 75, 0.4);
-  background-color: #2b3c4b;
+    border-radius: 0.3rem;
+    transition: all 0.3s;
+    filter: brightness(110%);
+    box-shadow: 0 0 20px 5px var(--movieWrapper-box-shadow);
+    background-color: var(--movieWrapper-background);
 }
 
 .main ul li .moviePoster img {
@@ -175,7 +259,7 @@ body {
 .movieYear,
 .movieTotal,
 .movieEnTitle {
-  color: rgba(255, 255, 255, 0.7);
+    color: var(--movie-color);
 }
 
 .movieRating {
@@ -187,15 +271,6 @@ body {
 .movieRating img {
   width: 18px;
   margin-right: 2px;
-}
-
-.movieCategory ul li a.active {
-  background-color: #e0e0e0;
-  border: 2px solid #333;
-  padding: 2px;
-  border-radius: 5px;
-  color: #ff6600;
-  font-weight: bold;
 }
 
 .logo {
@@ -224,17 +299,17 @@ body {
 
 /* 기본 스타일 */
 #selectFilterMovie {
-  background-color: #0000003f;
-  color: #fff;
-  border: 0.5px solid #5c5c5c;
-  padding: 0.5rem 0.5rem;
-  border-radius: 0.4rem;
-  font-weight: light;
-  font-size: 0.8rem;
-  text-align: left;
-  cursor: pointer;
-  transition: background-color 0.3s, border-color 0.3s;
-  box-sizing: border-box;
+    background-color: var(--selectFilterMovie-background);
+    color: var(--color-text);
+    border: 0.5px solid var(--selectFilterMovie-border);
+    padding: 0.5rem 0.5rem;
+    border-radius: 0.4rem;
+    font-weight: light;
+    font-size: 0.8rem;
+    text-align: left;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+    box-sizing: border-box;
 }
 
 /* 드롭다운 화살표 스타일 */
@@ -250,95 +325,39 @@ body {
 
 /* 포커스 상태 스타일 */
 #selectFilterMovie:focus {
-  border-color: #ffffff9f;
-  background-color: #ffffff14;
-  outline: none;
+    border-color: var(--selectFilterMovie-focus-border);
+    background-color: var(--selectFilterMovie-focus-background);
+    outline: none;
 }
 
 /* 버튼 클릭 시 스타일 */
 #selectFilterMovie:hover {
-  background-color: #00000014;
-  border-color: #ffffff18;
+    background-color: var(--selectFilterMovie-hover-background);
+    border-color: var(----selectFilterMovie-hover-border);
 }
 
 @media (max-width: 768px) {
-  .header .logo {
-    font-size: 2rem;
-    font-weight: 700;
-  }
-  .header .searchForm {
-    display: flex;
-    align-items: center;
-    border: 0;
-    border-bottom: 1px solid #969696;
-    position: center;
-    width: 100%;
-    margin-top: 10px; /* 항목 간 여백 추가 */
-  }
-  .header .searchForm input {
-    width: 100%;
-    background-color: transparent;
-    outline: none;
-  }
-  .movieCategory {
-    margin-top: 1rem; /* 항목 간 여백 추가 */
-    margin-bottom: -0.3rem;
-  }
-
-  .movieDetails {
-    flex-direction: column; /* 세로 방향으로 배치 */
-    display: flex;
-    align-items: center;
-    margin: 0 auto; /* 수평 가운데 정렬을 위한 auto 마진 */
-    max-width: 100%; /* 최대 너비를 부모 컨테이너에 맞게 조정 */
-    box-sizing: border-box; /* 패딩과 테두리가 요소의 전체 너비에 포함되도록 설정 */
-  }
-
-  .movieDetails .poster {
-    margin: 0; /* 여백 제거 */
-    margin-bottom: 2rem; /* 포스터와 정보 사이 여백 추가 */
-  }
-
-  .movieDetails .poster img {
-    width: 80vw; /* 포스터 너비를 화면 너비에 맞추어 조정 */
-    height: auto; /* 높이는 자동으로 조정 */
-  }
-
-  .movieDetails .specs {
-    align-items: center;
-    max-width: 100%; /* 최대 너비를 100%로 설정 */
-  }
-
-  .specs .title .koTitle {
-    text-align: center;
-    font-size: 1.875rem; /* 글자 크기 조정 */
-  }
-
-  .specs .title .enTitle {
-    text-align: center;
-    font-size: 1.2rem; /* 글자 크기 조정 */
-    margin-top: rem; /* 제목 간격 조정 */
-  }
-
-  .specs .info {
-    justify-content: center;
-    margin-top: 0.5rem; /* 여백 조정 */
-  }
-
-  .specs .rating {
-    margin-bottom: 1rem;
-    justify-content: center;
-  }
-
-  .specs .overview p {
-    -webkit-line-clamp: 4; /* 줄 수를 줄여서 텍스트 길이 조정 */
-    line-height: 200%; /* 줄 높이 조정 */
-  }
-  .specs .genre {
-    justify-content: center;
-    margin-top: -1rem;
-  }
-  .specs .genreContainer {
-    font-size: 0.75rem; /* 폰트 크기 조정 */
-  }
+    .header .logo {
+        font-size: 2rem;
+        font-weight: 700;
+    }
+    .header .searchForm {
+        display: flex;
+        align-items: center;
+        border: 0;
+        border-bottom: 1px solid #969696;
+        position: center;
+        left: 0%;
+        width: 100%;
+        margin-top: 10px; /* 항목 간 여백 추가 */
+    }
+    .header .searchForm input {
+        width: 100%;
+        background-color: transparent;
+        outline: none;
+    }
+    .movieCategory {
+        margin-top: 1rem; /* 항목 간 여백 추가 */
+        margin-bottom: -0.3rem;
+    }
 }
