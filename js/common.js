@@ -63,14 +63,16 @@ const filterNames = (input) => {
 
 // 필터를 적용하는 함수
 const applyFilter = (filterValue) => {
+  let moviesToFilter = filteredMovies.length ? filteredMovies : movieLists;
+
   if (filterValue === 'star') {
-    filteredMovies = movieLists.slice().sort((a, b) => b.rating - a.rating);
+    filteredMovies = moviesToFilter.slice().sort((a, b) => b.rating - a.rating);
   } else if (filterValue === 'ko') {
-    filteredMovies = movieLists.slice().sort((a, b) => a.koTitle.localeCompare(b.koTitle));
+    filteredMovies = moviesToFilter.slice().sort((a, b) => a.koTitle.localeCompare(b.koTitle));
   } else if (filterValue === 'en') {
-    filteredMovies = movieLists.slice().sort((a, b) => a.enTitle.localeCompare(b.enTitle));
+    filteredMovies = moviesToFilter.slice().sort((a, b) => a.enTitle.localeCompare(b.enTitle));
   } else if (filterValue === 'releaseDate') {
-    filteredMovies = movieLists.slice().sort((a, b) => new Date(b.date) - new Date(a.date));
+    filteredMovies = moviesToFilter.slice().sort((a, b) => new Date(b.date) - new Date(a.date));
   }
   createMovieCards(filteredMovies);
 }
@@ -98,6 +100,7 @@ const initializeMovies = async () => {
     document.getElementById(selectedCategory).classList.add('active');
     movies = await getMoviesByCategory(selectedCategory);
     movieLists = formattedMovieData(movies);
+    filteredMovies = [...movieLists];
   } else {
     await fetchMovieData();
   }
@@ -105,8 +108,6 @@ const initializeMovies = async () => {
   createMovieCards();
   applyStoredFilter(); // 저장된 필터 적용
 }
-
-
 
 // 이벤트 리스너
 document.addEventListener('DOMContentLoaded', async () => {
@@ -143,6 +144,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
       const movies = await getMoviesByCategory(category);
       movieLists = formattedMovieData(movies);
+      filteredMovies = [...movieLists];
 
       // 필터 값을 초기화하고 별점순으로 설정
       const selectElement = document.getElementById('selectFilterMovie');
@@ -157,10 +159,22 @@ const form = document.getElementById("searchForm");
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   const input = document.getElementById('search').value.trim();
-  const filtered = filterNames(input);
-  createMovieCards(filtered);
-  if (!input.length) {
-    applyStoredFilter(); // 필터 적용
+  filteredMovies = filterNames(input); // 검색 결과를 filteredMovies에 저장
+
+  if (filteredMovies.length === 0) {
+    Swal.fire({
+      icon: 'warning',
+      title: '검색 결과가 없습니다.',
+      text: '메인 페이지로 이동합니다.',
+      confirmButtonText: '확인'
+    }).then(() => {
+      window.location.href = "/";
+    });
+  } else {
+    createMovieCards(filteredMovies);
+    if (!input.length) {
+      applyStoredFilter(); // 필터 적용
+    }
   }
 });
 
@@ -179,10 +193,10 @@ const searchImage = document.querySelector('.searchForm button > img')
 darkmodeBtn.addEventListener('click', () => {
   let dataAttr = document.body.dataset
 
-  if(dataAttr.theme.match('light-mode')){
+  if (dataAttr.theme.match('light-mode')) {
     darkLightImageChange('dark-mode')
     dataAttr.theme = 'dark-mode';
-  }else{
+  } else {
     darkLightImageChange('light-mode')
     dataAttr.theme = 'light-mode';
   }
@@ -190,10 +204,10 @@ darkmodeBtn.addEventListener('click', () => {
 })
 
 const darkLightImageChange = (mode) => {
-  if(mode === 'light-mode'){
+  if (mode === 'light-mode') {
     darkmodeImage.src = '../images/moon.png';
     searchImage.src = '../images/search_dark.svg';
-  }else{
+  } else {
     darkmodeImage.src = '../images/sun.png';
     searchImage.src = '../images/search_white.svg';
   }
