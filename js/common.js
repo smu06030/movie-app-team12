@@ -8,11 +8,8 @@ let filteredMovies = [];
 const fetchMovieData = async () => {
   try {
     const { results: movies } = await getTopLated('top_rated');
-
-    // movieLists.push(...formattedMovieData(movies))
     movieLists = formattedMovieData(movies);
     filteredMovies = [...movieLists];
-
     return movieLists;
   } catch (err) {
     console.log(err);
@@ -27,7 +24,7 @@ const createMovieCards = async (filteredMovies = null) => {
   ul.innerHTML = '';
 
   movieLists.map(movie => {
-    const { id, koTitle, enTitle, imgUrl, overview, rating, date } = movie
+    const { id, koTitle, enTitle, imgUrl, overview, rating, date } = movie;
 
     const li = document.createElement('li');
     li.setAttribute('class', 'movie');
@@ -63,24 +60,24 @@ const form = document.getElementById("searchForm");
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  const input = document.getElementById('search').value.trim()
+  const input = document.getElementById('search').value.trim();
 
   input.length
     ? createMovieCards(filterNames(input))
-    : createMovieCards(movieLists)
-})
+    : createMovieCards(movieLists);
+});
 
 // 이름 필터
 const filterNames = (input) => {
   const value = input.toLowerCase();
 
-  return value  
-      ? movieLists.filter(movie => {
-          const check = movie.koTitle.includes(value) || movie.enTitle.includes(value);
-          return check
-        }) 
-      : []
-}
+  return value
+    ? movieLists.filter(movie => {
+        const check = movie.koTitle.includes(value) || movie.enTitle.includes(value);
+        return check;
+      })
+    : [];
+};
 
 // 카테고리 클릭 이벤트
 document.querySelectorAll('.movieCategory a').forEach(link => {
@@ -104,62 +101,73 @@ document.querySelectorAll('.movieCategory a').forEach(link => {
   });
 });
 
+// 정렬 기준 적용 함수
+const sortFilterCases = (filterValue) => {
+  if (filterValue === 'star') {
+    filteredMovies = movieLists.slice().sort(function (a, b) {
+      return b.rating - a.rating;
+    });
+    // 이름순(ko) 정렬
+  } else if (filterValue === 'ko') {
+    filteredMovies = movieLists.slice().sort(function (a, b) {
+      return a.koTitle.localeCompare(b.koTitle);
+    });
+    // 이름순(en) 정렬
+  } else if (filterValue === 'en') {
+    filteredMovies = movieLists.slice().sort(function (a, b) {
+      return a.enTitle.localeCompare(b.enTitle);
+    });
+    // 개봉일순 정렬
+  } else if (filterValue === 'releaseDate') {
+    filteredMovies = movieLists.slice().sort(function (a, b) {
+      return new Date(b.date) - new Date(a.date);
+    });
+  }
+  createMovieCards(filteredMovies);
+}
+
 // 로컬스토리지에 카테고리가 저장되어 있으면 저장된 카테고리 보여주고 없으면 메인 보여주기
+// 로컬스토리지에 필터가 저장되어 있으면 저장된 필터로 보여주고 없으면 별점순으로 보여주기
 const initializeMovies = async () => {
   const selectedCategory = localStorage.getItem('selectedCategory');
+  const selectedSort = localStorage.getItem('selectedSort');
 
   if (selectedCategory) {
     document.getElementById(selectedCategory).classList.add('active');
     const movies = await getMoviesByCategory(selectedCategory);
     movieLists = formattedMovieData(movies);
-    createMovieCards(movieLists);
+    sortFilterCases(selectedSort ? selectedSort : 'star');
   } else {
     const movies = await fetchMovieData();
     createMovieCards(movies);
   }
-}
 
-initializeMovies();
+  // 로컬스토리지에 저장된 정렬 기준이 있으면 적용
+  if (selectedSort) {
+    document.getElementById('selectFilterMovie').value = selectedSort;
+    sortFilterCases(selectedSort);
+  }
+};
 
-
-// 로고 클릭하면 로컬스토리지 비우기
+// 로고 클릭하면 로컬스토리지 비우기 (카테고리와 정렬기준 둘 다)
+// 로고 클릭하면 메인페이지로 이동
 document.querySelector('.logo div').addEventListener('click', (e) => {
   localStorage.removeItem('selectedCategory');
+  localStorage.removeItem('selectedSort');
   window.location.href = "/";
 });
 
+
+// 페이지 로드될 때 영화데이터 가져오고 저장된 카테고리 및 정렬 기준 적용하기
+// 정렬 기준 로컬스토리지 저장
 document.addEventListener('DOMContentLoaded', async () => {
-  await fetchMovieData();
-  createMovieCards();
+  await initializeMovies();
 
   const selectElement = document.getElementById('selectFilterMovie');
 
   selectElement.addEventListener('change', (event) => {
     const filterValue = event.target.value;
-
-
-    // 별점순
-    if (filterValue === 'star') {
-      filteredMovies = movieLists.slice().sort(function (a, b) {
-        return b.rating - a.rating;
-      });
-      // 이름순(ko) 정렬
-    } else if (filterValue === 'ko') {
-      filteredMovies = movieLists.slice().sort(function (a, b) {
-        return a.koTitle.localeCompare(b.koTitle);
-      });
-      // 이름순(en) 정렬
-    } else if (filterValue === 'en') {
-      filteredMovies = movieLists.slice().sort(function (a, b) {
-        return a.enTitle.localeCompare(b.enTitle);
-      });
-      // 개봉일순 정렬
-    } else if (filterValue === 'releaseDate') {
-      filteredMovies = movieLists.slice().sort(function (a, b) {
-        return new Date(b.date) - new Date(a.date);
-      });
-    }
-
-    createMovieCards(filteredMovies);
+    localStorage.setItem('selectedSort', filterValue);
+    sortFilterCases(filterValue);
   });
 });

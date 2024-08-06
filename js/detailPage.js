@@ -238,7 +238,6 @@ document.querySelector(".logo div").addEventListener('click',() => {
   window.location.href = "/";
 })
 
-createMovieDetailCard();
 const prevSlide = () => {
   currentIndex == 0 ? (currentIndex = totalActors - 5) : currentIndex--;
   updateSlider();
