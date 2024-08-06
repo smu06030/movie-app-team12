@@ -226,14 +226,14 @@ const createImageSlider = () => {
   let actors = document.querySelectorAll('.actor:not(.skeleton)');
   let slider = document.querySelector('.slider');
   let totalActors = actors.length;
-  
+
   const nextSlide = () => {
-    currentIndex == totalActors - 5 ? (currentIndex = 0) : currentIndex++;
+    currentIndex == totalActors - imagesPerView  ? (currentIndex = 0) : currentIndex++;
     updateSlider();
   }
   
   const prevSlide = () => {
-    currentIndex == 0 ? (currentIndex = totalActors - 5) : currentIndex--;
+    currentIndex == 0 ? (currentIndex = totalActors - imagesPerView ) : currentIndex--;
     updateSlider();
   }
   
@@ -247,6 +247,13 @@ const createImageSlider = () => {
   document.getElementById('nextButton').addEventListener('click', nextSlide);
   document.getElementById('prevButton').addEventListener('click', prevSlide);
 }
+
+// 상세에서 로고 누르면 메인으로 이동하고 로컬스토리지 비우기
+document.querySelector(".logo div").addEventListener('click',() => {
+  localStorage.removeItem('selectedCategory');
+  localStorage.removeItem('selectFilterMovie');
+  window.location.href = "/";
+})
 
 // 로드 시
 document.addEventListener("DOMContentLoaded", () => {
