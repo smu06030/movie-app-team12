@@ -271,3 +271,13 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
+const checkbox = document.getElementById("check");
+const body = document.querySelector("body")
+checkbox.addEventListener('click', event=> {
+    if (event.target.checked) {
+        document.body.dataset.theme = 'dark-mode';
+    } else {
+        document.body.dataset.theme = 'light-mode';
+    }
+  });
