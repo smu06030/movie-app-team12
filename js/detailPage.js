@@ -220,46 +220,46 @@ const checkImagesLoaded = (callback) => {
   });
 };
 
+// 이미지 슬라이드
+const createImageSlider = () => {
+  let currentIndex = 0;
+  let actors = document.querySelectorAll('.actor:not(.skeleton)');
+  let slider = document.querySelector('.slider');
+  let totalActors = actors.length;
+  
+  const nextSlide = () => {
+    currentIndex == totalActors - 5 ? (currentIndex = 0) : currentIndex++;
+    updateSlider();
+  }
+  
+  const prevSlide = () => {
+    currentIndex == 0 ? (currentIndex = totalActors - 5) : currentIndex--;
+    updateSlider();
+  }
+  
+  const updateSlider = () => {
+    const slideWidth = actors[0].clientWidth; // 한 이미지의 너비
+    const totalWidth = slideWidth * totalActors;
+    slider.style.width = `${totalWidth}px`;
+    slider.style.transform = `translateX(-${(slideWidth * currentIndex)+(currentIndex * 16)}px)`;
+  }
 
-// 이미지 next, prev 이벤트
-let currentIndex = 0;
-let actors;
-let totalActors;
-let slider;
-
-const nextSlide = () => {
-  currentIndex == totalActors - 5 ? (currentIndex = 0) : currentIndex++;
-  updateSlider();
+  document.getElementById('nextButton').addEventListener('click', nextSlide);
+  document.getElementById('prevButton').addEventListener('click', prevSlide);
 }
 
 // 상세에서 로고 누르면 메인으로 이동하고 로컬스토리지 비우기
 document.querySelector(".logo div").addEventListener('click',() => {
   localStorage.removeItem('selectedCategory');
+  localStorage.removeItem('selectFilterMovie');
   window.location.href = "/";
 })
-
-const prevSlide = () => {
-  currentIndex == 0 ? (currentIndex = totalActors - 5) : currentIndex--;
-  updateSlider();
-}
-
-const updateSlider = () => {
-  const slideWidth = actors[0].clientWidth; // 한 이미지의 너비
-  const totalWidth = slideWidth * totalActors;
-  slider.style.width = `${totalWidth}px`;
-  slider.style.transform = `translateX(-${(slideWidth * currentIndex)+(currentIndex * 16)}px)`;
-}
 
 // 로드 시
 document.addEventListener("DOMContentLoaded", () => {
   Promise.all([createMovieDetailCard(), createActorsImage()]).then(() => {
-
-    actors = document.querySelectorAll('.actor:not(.skeleton)');
-    totalActors = actors.length;
-    slider = document.querySelector('.slider');
-    
-    document.getElementById('nextButton').addEventListener('click', nextSlide);
-    document.getElementById('prevButton').addEventListener('click', prevSlide);
+    // 이미지 슬라이드
+    createImageSlider();
 
     checkImagesLoaded(() => {
       // 데이터가 로드되면 스켈레톤 UI 숨김
