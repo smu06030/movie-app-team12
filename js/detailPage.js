@@ -257,6 +257,10 @@ document.querySelector(".logo div").addEventListener('click',() => {
 
 // 로드 시
 document.addEventListener("DOMContentLoaded", () => {
+  const darkmode = localStorage.getItem('darkmode') || document.body.dataset.theme;
+  darkLightImageChange(darkmode)
+  document.body.dataset.theme = darkmode;
+
   Promise.all([createMovieDetailCard(), createActorsImage()]).then(() => {
     // 이미지 슬라이드
     createImageSlider();
@@ -271,3 +275,29 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
+
+// 라이트-다크 모드
+const darkmodeBtn = document.querySelector('.darkmodeBtn')
+const darkmodeImage = document.querySelector('.darkmodeBtn > img')
+
+darkmodeBtn.addEventListener('click', () => {
+  let dataAttr = document.body.dataset
+
+  if(dataAttr.theme.match('light-mode')){
+    darkLightImageChange('dark-mode')
+    dataAttr.theme = 'dark-mode';
+  }else{
+    darkLightImageChange('light-mode')
+    dataAttr.theme = 'light-mode';
+  }
+  localStorage.setItem('darkmode', dataAttr.theme);
+})
+
+const darkLightImageChange = (mode) => {
+  if(mode === 'light-mode'){
+    darkmodeImage.src = '../images/moon.png';
+  }else{
+    darkmodeImage.src = '../images/sun.png';
+  }
+}
