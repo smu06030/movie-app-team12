@@ -67,10 +67,10 @@ function reviewSetItem() {
 // 리뷰 저장
 function setReview() {
   let user = document.getElementById("user").value;
-  let password = encrypt(document.getElementById("password").value);
+  let password = document.getElementById("password").value;
   let review = document.getElementById("review").value;
 
-  const person = { user, password, review };
+  const person = { user, password: encrypt(password), review };
 
   if (user === "") {
     alert("작성자를 입력해주세요.");
