@@ -1,9 +1,27 @@
+const PUBLIC_KEY = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const SECRET_KEY = "ZYXWVUTSRQPONMLKJIHGFEDCBA";
+
 let reviewList = [];
 
 const urlParams = new URLSearchParams(window.location.search); // URL query parameter 가져오기
 const movieId = urlParams.get("id"); // 매개변수 id 값 가져오기
 
 const reviewId = "review" + movieId;
+
+// 암호화
+function encrypt(values) {
+    const encrypt = new JSEncrypt();
+    encrypt.setPublicKey(PUBLIC_KEY);
+
+    const encrypted = CryptoJS.AES.encrypt(JSON.stringify(values), SECRET_KEY);
+    return encrypted.toString();
+}
+
+// 복호화
+function decrypt(encryptedData) {
+    const decrypted = CryptoJS.AES.decrypt(encryptedData, SECRET_KEY);
+    return decrypted.toString(CryptoJS.enc.Utf8).replaceAll('"', "");
+}
 
 // 리뷰 가져오기
 function getReview() {
@@ -39,7 +57,7 @@ function reviewSetItem() {
 // 리뷰 저장
 function setReview() {
     let user = document.getElementById("user").value;
-    let password = document.getElementById("password").value;
+    let password = encrypt(document.getElementById("password").value);
     let review = document.getElementById("review").value;
 
     const person = { user, password, review };
@@ -76,10 +94,9 @@ function setReview() {
 function updateReview(index) {
     const checkPassword = prompt("비밀번호를 입력해주세요");
 
-    console.log(checkPassword);
-    if (checkPassword === reviewList[index]["password"]) {
+    if (checkPassword === decrypt(reviewList[index]["password"])) {
         const updateTemp = prompt("리뷰를 수정해주세요.", reviewList[index]["review"]);
-        reviewList[index]["review"] = updateTemp;
+        reviewList[index]["review"] = updateTemp === null ? reviewList[index]["review"] : updateTemp;
         reviewSetItem();
     } else if (checkPassword !== null) {
         alert("잘못된 비밀번호 입니다. 정확한 비밀번호를 입력해주세요.");
@@ -91,7 +108,7 @@ function updateReview(index) {
 function deleteReview(index) {
     const checkPassword = prompt("비밀번호를 입력해주세요");
 
-    if (checkPassword === reviewList[index]["password"]) {
+    if (checkPassword === decrypt(reviewList[index]["password"])) {
         const deleteTemp = confirm("정말 삭제하시겠습니까?");
         if (deleteTemp) {
             reviewList.splice(index, 1);
