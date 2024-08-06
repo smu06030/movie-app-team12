@@ -63,15 +63,15 @@ body[data-theme='dark-mode'] {
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 ul {
-    padding: 0;
+  padding: 0;
 }
 
 li {
-    list-style: none;
+  list-style: none;
 }
 
 body {
@@ -83,8 +83,8 @@ body {
 }
 
 .container {
-    margin: 0 auto;
-    padding: 0;
+  margin: 0 auto;
+  padding: 0;
 }
 
 /* header */
@@ -102,8 +102,8 @@ body {
 }
 
 .header .logo {
-    font-size: 1.2rem;
-    font-weight: 700;
+  font-size: 1.2rem;
+  font-weight: 700;
 }
 
 .header .searchForm {
@@ -122,16 +122,16 @@ body {
 }
 
 .header .searchForm input {
-    width: 360px;
-    background-color: transparent;
-    outline: none;
-    border: 0;
+  width: 360px;
+  background-color: transparent;
+  outline: none;
+  border: 0;
 }
 .header .searchForm button {
-    background-color: transparent;
-    cursor: pointer;
-    border: 0;
-    padding: 6px;
+  background-color: transparent;
+  cursor: pointer;
+  border: 0;
+  padding: 6px;
 }
 
 .header .searchForm button:hover {
@@ -145,7 +145,7 @@ body {
 
 /* movieCategory */
 .movieCategory {
-    padding: auto;
+  padding: auto;
 }
 
 .movieCategory ul {
@@ -156,7 +156,7 @@ body {
 }
 
 .movieCategory ul li {
-    display: block; /* 각 항목을 블록으로 설정 */
+  display: block; /* 각 항목을 블록으로 설정 */
 }
 
 .movieCategory a {
@@ -197,20 +197,20 @@ body {
 /* main */
 
 .main {
-    padding: 16px 24px;
+  padding: 16px 24px;
 }
 .main .movieCards {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 1rem;
-    padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+  padding: 0;
 }
 
 .main ul li {
-    cursor: pointer;
-    font-size: 0.875rem;
-    overflow: hidden;
-    box-sizing: border-box;
+  cursor: pointer;
+  font-size: 0.875rem;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 .main ul li .movieWrapper:hover {
@@ -222,37 +222,37 @@ body {
 }
 
 .main ul li .moviePoster img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    border-top-left-radius: 0.3rem;
-    border-top-right-radius: 0.3rem;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-top-left-radius: 0.3rem;
+  border-top-right-radius: 0.3rem;
 }
 
 .movie .movieKoTitle {
-    padding: 8px 8px 2px;
-    font-weight: 700;
+  padding: 8px 8px 2px;
+  font-weight: 700;
 }
 
 .movie .movieEnTitle {
-    padding: 0 8px 8px;
-    font-weight: 400;
+  padding: 0 8px 8px;
+  font-weight: 400;
 }
 
 .movie .movieOverview {
-    padding: 2px 8px 2px;
-    display: -webkit-box;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: wrap;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
+  padding: 2px 8px 2px;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: wrap;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
 .movie .movieInfo {
-    display: flex;
-    justify-content: space-between;
-    padding: 4px 8px 8px;
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 8px 8px;
 }
 
 .movieYear,
@@ -262,38 +262,38 @@ body {
 }
 
 .movieRating {
-    display: flex;
-    justify-content: end;
-    align-items: center;
+  display: flex;
+  justify-content: end;
+  align-items: center;
 }
 
 .movieRating img {
-    width: 18px;
-    margin-right: 2px;
+  width: 18px;
+  margin-right: 2px;
 }
 
 .logo {
-    cursor: pointer;
+  cursor: pointer;
 }
 .mainTitleSelectBox {
-    display: flex;
-    justify-content: right;
-    margin-bottom: 20px;
-    align-items: center;
-    position: relative;
-    width: 100%;
+  display: flex;
+  justify-content: right;
+  margin-bottom: 20px;
+  align-items: center;
+  position: relative;
+  width: 100%;
 }
 
 .mainTitle {
-    font-size: 1.2rem;
-    font-weight: 400;
-    flex-grow: 1;
+  font-size: 1.2rem;
+  font-weight: 400;
+  flex-grow: 1;
 }
 
 /* select-wrapper */
 .select-wrapper {
-    position: relative;
-    max-width: 300px;
+  position: relative;
+  max-width: 300px;
 }
 
 /* 기본 스타일 */
@@ -313,13 +313,13 @@ body {
 
 /* 드롭다운 화살표 스타일 */
 #selectFilterMovie::after {
-    font-size: 0.75rem; /* 화살표 크기 조정 */
-    position: absolute; /* 절대 위치 지정 */
-    right: 0.75rem; /* 오른쪽 여백 설정 */
-    top: 50%; /* 수직 중앙 정렬 */
-    transform: translateY(-50%); /* 수직으로 정확히 중앙에 맞추기 */
-    pointer-events: none; /* 클릭 이벤트 방지 */
-    color: #ffffffb0; /* 색상 설정 */
+  font-size: 0.75rem; /* 화살표 크기 조정 */
+  position: absolute; /* 절대 위치 지정 */
+  right: 0.75rem; /* 오른쪽 여백 설정 */
+  top: 50%; /* 수직 중앙 정렬 */
+  transform: translateY(-50%); /* 수직으로 정확히 중앙에 맞추기 */
+  pointer-events: none; /* 클릭 이벤트 방지 */
+  color: #ffffffb0; /* 색상 설정 */
 }
 
 /* 포커스 상태 스타일 */
