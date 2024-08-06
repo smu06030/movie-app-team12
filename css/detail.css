@@ -1,14 +1,13 @@
 :root {
-  --color-header-background: #060f16;
-  --color-text: #fff;
-  --color-border: #5c5c5c;
-  --color-hover: #1a2b36;
-  --color-shadow: rgba(43, 60, 75, 0.4);
-  --font-size-base: 1rem;
-  --poster-width: 300px;
+  --width--poster500: 500px;
+  --width--poster300: 300px;
+  --width--actor180: 180px;
+  --color--white: #fff;
+  --color--black: #000;
+  --color--lightGray: rgba(255, 255, 255, 0.7);
 }
 * {
-  color: #fff;
+  color: var(--color--white);
   margin: 0; /* 기본 마진 제거 */
   padding: 0; /* 기본 패딩 제거 */
 }
@@ -41,10 +40,15 @@ body {
 
 /* header */
 .header {
+  background-color: var(--color--black);
+  background-image: linear-gradient(
+    rgba(255, 255, 255, 0.09),
+    rgba(255, 255, 255, 0.09)
+  );
   padding: 24px 24px;
   min-height: 64px;
   width: 100%;
-  display: flex;
+  /* display: flex; */
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
@@ -60,36 +64,26 @@ body {
 .main {
   padding: 16px 24px;
   width: 100%;
+  height: 100%;
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
   position: relative;
+  isolation: isolate;
 }
 
 .main::after {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(15, 15, 15, 0.672);
-}
-main * {
-  z-index: 1;
+  background: rgba(0, 0, 0, 0.828);
+  z-index: -1;
+  inset: 0;
 }
 
 /* movieCategory */
 .movieCategory {
-  background-color: #000;
-  padding: 10px 10px;
-}
-
-.movieCategory ul {
-  display: flex;
-  gap: 1rem;
-  /* 화면 크기에 따라 줄 바꿈 */
+  --color--black: #000;
 }
 
 .movieCategory a {
@@ -106,34 +100,28 @@ main * {
 .movieDetailWrapper {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   margin: 0 auto;
-  margin-top: 5rem;
-  gap: 4rem;
+  margin-top: 4rem;
+  gap: 6rem;
 }
 
 .movieDetails {
+  justify-content: center; /* 중앙 정렬 */
   display: flex; /* 가로 방향으로 배치 */
   align-items: flex-start; /* 상단 정렬 */
-  justify-content: center; /* 중앙 정렬 */
-  margin: 2rem auto;
-  padding: 20px;
   position: relative; /* 자식 요소에 대한 위치 기준 설정 */
   max-width: 100%; /* 최대 너비 설정 */
   box-sizing: border-box; /* 패딩과 테두리를 포함한 전체 너비 설정 */
 }
 
 .movieDetails .poster {
+  width: var(--width--poster300);
+  height: calc(var(--width--poster300) * 3 / 2);
   flex-shrink: 0;
   margin-right: 50px;
-  margin-left: 50px;
 }
 
 .movieDetails .poster img {
-  display: block;
-  width: var(--width--poster300);
-  height: calc(var(--width--poster300) * 3 / 2);
   border-radius: 10px;
 }
 
@@ -150,13 +138,13 @@ main * {
 
 .specs .title .koTitle {
   font-size: 2.5rem;
-  color: #fff;
+  color: var(--color--white);
 }
 
 .specs .title .enTitle {
-  font-size: 1.2rem;
-  color: rgba(255, 255, 255, 0.7);
-  margin-top: 0;
+  font-size: 1.5rem;
+  color: var(--color--lightGray);
+  margin-top: -0.5rem;
 }
 
 .specs .info {
@@ -165,7 +153,7 @@ main * {
 }
 
 .specs .info span {
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--color--lightGray);
 }
 
 .specs .info .year::after {
@@ -187,13 +175,13 @@ main * {
 }
 
 .specs .rating .total {
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--color--lightGray);
 }
 
 .specs .overview,
 .specs .overview h2,
 .specs .genres h2 {
-  line-height: 180%;
+  line-height: 200%;
 }
 
 .specs .overview p {
@@ -207,7 +195,7 @@ main * {
 
 .specs .genre {
   display: flex;
-  margin: 1rem 0;
+  margin: 0.5rem 0;
 }
 
 .genreContainer {
@@ -225,6 +213,85 @@ main * {
   justify-content: center;
   align-items: center;
   cursor: pointer;
+}
+
+/* ---------- actor ---------- */
+
+.actorContainer {
+  flex-direction: column;
+}
+
+.actorTitle {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.actors {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  overflow: hidden;
+  position: relative;
+}
+
+.slider {
+  display: flex;
+  align-items: baseline;
+  transition: transform 0.3s ease;
+}
+
+.actor {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 180px;
+  margin-right: 1rem;
+}
+
+.actor img {
+  width: var(--width--actor180);
+  height: calc(var(--width--actor180) * 3 / 2);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.actor span {
+  margin-top: 1rem;
+}
+
+#prevButton,
+#nextButton {
+  position: absolute;
+  background-color: transparent;
+  padding: 1rem 1rem;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50px;
+  background-color: rgba(29, 29, 29, 0.9);
+  border: none;
+  cursor: pointer;
+}
+
+#prevButton {
+  top: 45%;
+  transform: translateY(-45%);
+}
+
+#nextButton {
+  top: 45%;
+  right: 0;
+  transform: translateY(-45%);
+}
+
+#prevButton img,
+#nextButton img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 /* 스켈레톤 UI */
@@ -316,88 +383,5 @@ main * {
   }
   100% {
     transform: translateX(100%);
-  }
-}
-
-/* 모바일 쿼리: 화면 폭이 768px 이하인 경우 */
-@media (max-width: 768px) {
-  .header .searchForm {
-    display: flex;
-    align-items: center;
-    border: 0;
-    border-bottom: 1px solid #969696;
-    position: center;
-    margin: 20px 0px 20px 0px;
-    width: 100%;
-  }
-  .header .searchForm input {
-    width: 100%;
-    background-color: transparent;
-    outline: none;
-    border: 0;
-  }
-  .movieCategory ul {
-    margin-top: 20px;
-    flex-direction: column; /* 세로 방향으로 배치 */
-    align-items: flex-start;
-  }
-
-  .movieCategory ul li {
-    margin-bottom: 5px; /* 항목 간 여백 추가 */
-  }
-
-  .movieDetails {
-    flex-direction: column; /* 세로 방향으로 배치 */
-    display: flex;
-    align-items: center;
-    margin: 0 auto; /* 수평 가운데 정렬을 위한 auto 마진 */
-    padding: 20px;
-    max-width: 100%; /* 최대 너비를 부모 컨테이너에 맞게 조정 */
-    box-sizing: border-box; /* 패딩과 테두리가 요소의 전체 너비에 포함되도록 설정 */
-  }
-
-  .movieDetails .poster {
-    margin: 0; /* 여백 제거 */
-    margin-bottom: 2rem; /* 포스터와 정보 사이 여백 추가 */
-  }
-
-  .movieDetails .poster img {
-    width: 80vw; /* 포스터 너비를 화면 너비에 맞추어 조정 */
-    height: auto; /* 높이는 자동으로 조정 */
-  }
-
-  .movieDetails .specs {
-    text-align: center;
-    max-width: 100%; /* 최대 너비를 100%로 설정 */
-  }
-
-  .specs .title .koTitle {
-    font-size: 1.875rem; /* 글자 크기 조정 */
-  }
-
-  .specs .title .enTitle {
-    font-size: 1.2rem; /* 글자 크기 조정 */
-    margin-top: 1rem; /* 제목 간격 조정 */
-  }
-
-  .specs .info {
-    margin: 0.7rem auto; /* 세로 방향으로 배치 */
-    margin-top: 0.7rem; /* 여백 조정 */
-  }
-
-  .specs .rating {
-    margin: 0.7rem auto;
-  }
-
-  .specs .overview p {
-    -webkit-line-clamp: 3; /* 줄 수를 줄여서 텍스트 길이 조정 */
-    line-height: 200%; /* 줄 높이 조정 */
-  }
-  .specs .genre {
-    justify-content: center;
-  }
-  .specs .genreContainer {
-    font-size: 0.75rem; /* 폰트 크기 조정 */
-    padding: 0.25rem 0.5rem; /* 패딩 조정 */
   }
 }
