@@ -1,4 +1,4 @@
-import { getTopLated, getMoviesByCategory } from "./API.js";
+import { getMoviesByCategory } from "./API.js";
 import { formattedMovieData } from "./formatMovie.js";
 
 let movieLists = [];
@@ -7,7 +7,7 @@ let filteredMovies = [];
 // 영화 데이터 가져오기
 const fetchMovieData = async () => {
   try {
-    const { results: movies } = await getTopLated('top_rated');
+    const movies = await getMoviesByCategory('top_rated');
     movieLists = formattedMovieData(movies);
     filteredMovies = [...movieLists];
     return movieLists;

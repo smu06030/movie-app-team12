@@ -28,18 +28,6 @@ const generateUrls = (type, { movieId = null, page = 1 } = {}) => {
   }
 }
 
-const getTopLated = async (type) => {
-  const url = generateUrls(type);
-  try {
-    const response = await fetch(url, options);
-    const json = await response.json();
-
-    return json;
-  } catch (err) {
-    console.error(err);
-  }
-};
-
 const getMovieDetail = async (type, movieId) => {
   const url = generateUrls(type, { movieId });
   try {
@@ -84,4 +72,4 @@ const getCredits = async (type, movieId) => {
   }
 };
 
-export { getTopLated, getMovieDetail, getMoviesByCategory, getCredits }
+export { getMovieDetail, getMoviesByCategory, getCredits }
