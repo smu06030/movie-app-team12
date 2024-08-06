@@ -36,7 +36,7 @@ body {
   min-height: 64px;
   width: 100%;
   display: flex;
-  background-color: #060f16;
+  /* background-color: #060f16; */
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
@@ -56,6 +56,8 @@ body {
   border: 0;
   border-bottom: 1px solid #969696;
   width: 400px;
+  position: relative;
+  left: 6%;
 }
 
 .header .searchForm:hover {
@@ -322,10 +324,10 @@ body {
     margin-top: 0.5rem; /* 여백 조정 */
   }
 
-  /* .specs .rating {
+  .specs .rating {
     margin-bottom: 1rem;
     justify-content: center;
-  } */
+  }
 
   .specs .overview p {
     -webkit-line-clamp: 4; /* 줄 수를 줄여서 텍스트 길이 조정 */

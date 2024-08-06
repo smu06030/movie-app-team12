@@ -4,11 +4,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>상세 페이지</title>
+    
+    <!-- 암호화 cdn -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js" integrity="sha512-a+SUDuwNzXDvz4XrIcXHuCf089/iJAoN4lmrXJg18XnduKK6YlDHNRalv4yd1N40OKI80tFidF+rqTFKGPoWFQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsencrypt/2.3.1/jsencrypt.min.js" integrity="sha512-zDvrqenA0eFJZCxBsryzUZcvihvNlEXbteMv62yRxdhR4s7K1aaz+LjsRyfk6M+YJLyAJEuuquIAI8I8GgLC8A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <!-- Reset css -->
     <link rel="stylesheet" href="./css/reset.css" />
+
     <!-- Detail css -->
     <link rel="stylesheet" href="./css/detail.css" />
     <link rel="stylesheet" href="./css/common.css" />
+    <link rel="stylesheet" href="./css/review.css" />
+
     <!-- font -->
     <link
       rel="stylesheet"
@@ -16,7 +24,10 @@
       crossorigin
       href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
     />
+
+    <!-- script -->
     <script src="./js/detailPage.js" type="module" defer></script>
+    <script src="./js/review.js"></script>
   </head>
   <body>
     <!-- container -->
@@ -92,25 +103,23 @@
               <button id="nextButton"></button>
             </div>
           </div>
-          <div>안녕하세요</div>
-          <div>안녕하세요</div>
-          <div>안녕하세요</div>
-          <div>안녕하세요</div>
-          <div>안녕하세요</div>
-          <div>안녕하세요</div>
-          <div>안녕하세요</div>
-          <div>안녕하세요</div>
-          <div>안녕하세요</div>
-          <div>안녕하세요</div>
-          <div>안녕하세요</div>
-          <div>안녕하세요</div>
-          <div>안녕하세요</div>
-          <div>안녕하세요</div>
-          <div>안녕하세요</div>
-          <div>안녕하세요</div>
-          <div>안녕하세요</div>
-          <div>안녕하세요</div>
-          <div>안녕하세요</div>
+
+          <!-- 리뷰 -->
+          <div class="review">
+              <div class="reviewTitle">✏️ 리뷰를 남겨보세요 ✏️</div>
+              <div class="reviewBox"></div>
+          </div>
+
+          <div class="input">
+              <div class="inputIdPw">
+                  <input type="text" id="user" placeholder="작성자: 최소 2글자 이상 입력" />
+                  <input type="password" id="password" placeholder="비밀번호: 최소 4글자 이상 입력" />
+              </div>
+              <div class="inputValue">
+                  <input type="text" id="review" placeholder="리뷰: 최소 10글자 이상 입력"></input>
+                  <button onclick="setReview()">입력</button>
+              </div>
+          </div>
         </section>
       </main>
     </div>

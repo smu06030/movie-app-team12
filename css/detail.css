@@ -101,8 +101,7 @@ body {
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  margin-top: 4rem;
-  gap: 6rem;
+  margin-top: 5rem;
 }
 
 .movieDetails {
@@ -162,7 +161,6 @@ body {
 
 .specs .rating {
   align-items: center;
-
   display: flex;
   justify-content: start;
   align-items: center;
@@ -186,6 +184,7 @@ body {
 .specs .overview h2,
 .specs .genres h2 {
   line-height: 200%;
+  margin-bottom: 5rem;
 }
 
 .specs .overview p {
@@ -238,6 +237,7 @@ body {
   justify-content: space-between;
   overflow: hidden;
   position: relative;
+  margin-bottom: 5rem;
 }
 
 .slider {
@@ -376,8 +376,14 @@ body {
 }
 
 .skeleton.overview {
-  width: 100%;
+  width: 600px;
   height: 220px;
+  margin-bottom: 0.5rem;
+}
+
+.skeleton.actor {
+  width: var(--width--actor180);
+  height: calc(var(--width--actor180) * 3 / 2);
   margin-bottom: 0.5rem;
 }
 
