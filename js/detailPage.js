@@ -248,6 +248,13 @@ const createImageSlider = () => {
   document.getElementById('prevButton').addEventListener('click', prevSlide);
 }
 
+// 상세에서 로고 누르면 메인으로 이동하고 로컬스토리지 비우기
+document.querySelector(".logo div").addEventListener('click',() => {
+  localStorage.removeItem('selectedCategory');
+  localStorage.removeItem('selectFilterMovie');
+  window.location.href = "/";
+})
+
 // 로드 시
 document.addEventListener("DOMContentLoaded", () => {
   Promise.all([createMovieDetailCard(), createActorsImage()]).then(() => {

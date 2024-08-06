@@ -180,6 +180,18 @@ body{
   margin-right: 2px;
 }
 
+.movieCategory ul li a.active {
+  background-color: #e0e0e0;
+  border: 2px solid #333;
+  padding: 2px;
+  border-radius: 5px;
+  color: #ff6600;
+  font-weight: bold;
+}
+
+.logo {
+  cursor: pointer;
+}
 .mainTitleSelectBox {
   display: flex;
   justify-content: center;
