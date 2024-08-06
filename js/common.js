@@ -106,8 +106,14 @@ const initializeMovies = async () => {
   applyStoredFilter(); // 저장된 필터 적용
 }
 
+
+
 // 이벤트 리스너
 document.addEventListener('DOMContentLoaded', async () => {
+  const darkmode = localStorage.getItem('darkmode') || document.body.dataset.theme;
+  darkLightImageChange(darkmode)
+  document.body.dataset.theme = darkmode;
+
   await initializeMovies();
 
   const selectElement = document.getElementById('selectFilterMovie');
@@ -164,3 +170,31 @@ document.querySelector('.logo div').addEventListener('click', (e) => {
   localStorage.removeItem('selectFilterMovie'); // 필터 값도 삭제
   window.location.href = "/";
 });
+
+// 라이트-다크 모드
+const darkmodeBtn = document.querySelector('.darkmodeBtn')
+const darkmodeImage = document.querySelector('.darkmodeBtn > img')
+const searchImage = document.querySelector('.searchForm button > img')
+
+darkmodeBtn.addEventListener('click', () => {
+  let dataAttr = document.body.dataset
+
+  if(dataAttr.theme.match('light-mode')){
+    darkLightImageChange('dark-mode')
+    dataAttr.theme = 'dark-mode';
+  }else{
+    darkLightImageChange('light-mode')
+    dataAttr.theme = 'light-mode';
+  }
+  localStorage.setItem('darkmode', dataAttr.theme);
+})
+
+const darkLightImageChange = (mode) => {
+  if(mode === 'light-mode'){
+    darkmodeImage.src = '../images/moon.png';
+    searchImage.src = '../images/search_dark.svg';
+  }else{
+    darkmodeImage.src = '../images/sun.png';
+    searchImage.src = '../images/search_white.svg';
+  }
+}
