@@ -1,128 +1,124 @@
 :root {
-  --width--poster500: 500px;
-  --width--poster300: 300px;
-  --width--actor180: 180px;
-  --color--white: #fff;
-  --color--black: #000;
-  --color--lightGray: rgba(255, 255, 255, 0.7);
+    --width--poster500: 500px;
+    --width--poster300: 300px;
+    --width--actor180: 180px;
+    --color--white: #fff;
+    --color--black: #000;
+    --color--lightGray: rgba(255, 255, 255, 0.7);
 }
 * {
-  color: var(--color--white);
-  margin: 0; /* 기본 마진 제거 */
-  padding: 0; /* 기본 패딩 제거 */
+    color: var(--color--white);
+    margin: 0; /* 기본 마진 제거 */
+    padding: 0; /* 기본 패딩 제거 */
 }
 
 a {
-  text-decoration: none;
+    text-decoration: none;
 }
 
 ul {
-  padding: 0;
+    padding: 0;
 }
 
 li {
-  list-style: none;
+    list-style: none;
 }
 
 body {
-  font-family: "Pretendard", sans-serif;
-  background-color: #141f29;
-  font-weight: 400;
-  font-size: 1rem;
-  min-width: 480px;
+    font-family: "Pretendard", sans-serif;
+    background-color: #141f29;
+    font-weight: 400;
+    font-size: 1rem;
+    min-width: 480px;
 }
 
 /* container */
 .container {
-  margin: 0 auto;
-  padding: 0;
+    margin: 0 auto;
+    padding: 0;
 }
 
 /* header */
 .header {
-  background-color: var(--color--black);
-  background-image: linear-gradient(
-    rgba(255, 255, 255, 0.09),
-    rgba(255, 255, 255, 0.09)
-  );
-  padding: 24px 24px;
-  min-height: 64px;
-  width: 100%;
-  /* display: flex; */
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
-    0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+    background-color: var(--color--black);
+    background-image: linear-gradient(rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.09));
+    padding: 24px 24px;
+    min-height: 64px;
+    width: 100%;
+    /* display: flex; */
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 }
 
 .header .logo {
-  font-size: 1.2rem;
-  font-weight: 700;
+    font-size: 1.2rem;
+    font-weight: 700;
 }
 /* main */
 .main {
-  padding: 16px 24px;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  position: relative;
-  isolation: isolate;
+    padding: 16px 24px;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    position: relative;
+    isolation: isolate;
 }
 
 .main::after {
-  content: "";
-  position: absolute;
-  background: rgba(0, 0, 0, 0.828);
-  z-index: -1;
-  inset: 0;
+    content: "";
+    position: absolute;
+    background: rgba(0, 0, 0, 0.828);
+    z-index: -1;
+    inset: 0;
 }
 
 /* movieCategory */
 .movieCategory {
-  --color--black: #000;
+    --color--black: #000;
 }
 
 .movieCategory a {
-  color: #ffffff86;
-  font-weight: 600;
+    color: #ffffff86;
+    font-weight: 600;
 }
 
 .movieCategory a.hover {
-  color: #ffffff;
-  font-weight: 600;
+    color: #ffffff;
+    font-weight: 600;
 }
 
 /* movieDetails */
 .movieDetailWrapper {
-  display: flex;
-  flex-direction: column;
-  margin: 0 auto;
-  margin-top: 4rem;
-  gap: 6rem;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    margin-top: 4rem;
+    gap: 6rem;
 }
 
 .movieDetails {
-  justify-content: center; /* 중앙 정렬 */
-  display: flex; /* 가로 방향으로 배치 */
-  align-items: flex-start; /* 상단 정렬 */
-  position: relative; /* 자식 요소에 대한 위치 기준 설정 */
-  max-width: 100%; /* 최대 너비 설정 */
-  box-sizing: border-box; /* 패딩과 테두리를 포함한 전체 너비 설정 */
+    justify-content: center; /* 중앙 정렬 */
+    display: flex; /* 가로 방향으로 배치 */
+    align-items: flex-start; /* 상단 정렬 */
+    position: relative; /* 자식 요소에 대한 위치 기준 설정 */
+    max-width: 100%; /* 최대 너비 설정 */
+    box-sizing: border-box; /* 패딩과 테두리를 포함한 전체 너비 설정 */
 }
 
 .movieDetails .poster {
-  width: var(--width--poster300);
-  height: calc(var(--width--poster300) * 3 / 2);
-  flex-shrink: 0;
-  margin-right: 50px;
+    width: var(--width--poster300);
+    height: calc(var(--width--poster300) * 3 / 2);
+    flex-shrink: 0;
+    margin-right: 50px;
 }
 
 .movieDetails .poster img {
-  border-radius: 10px;
+    border-radius: 10px;
 }
 
 .movieDetails .specs {
@@ -133,266 +129,260 @@ body {
 }
 
 .specs .title {
-  font-weight: 700;
+    font-weight: 700;
 }
 
 .specs .title .koTitle {
-  font-size: 2.5rem;
-  color: var(--color--white);
+    font-size: 2.5rem;
+    color: var(--color--white);
 }
 
 .specs .title .enTitle {
-  font-size: 1.5rem;
-  color: var(--color--lightGray);
-  margin-top: -0.5rem;
+    font-size: 1.5rem;
+    color: var(--color--lightGray);
+    margin-top: -0.5rem;
 }
 
 .specs .info {
-  display: flex;
-  margin-top: 0.5rem;
+    display: flex;
+    margin-top: 0.5rem;
 }
 
 .specs .info span {
-  color: var(--color--lightGray);
+    color: var(--color--lightGray);
 }
 
 .specs .info .year::after {
-  content: "ㆍ";
+    content: "ㆍ";
 }
 
 .specs .rating {
-  display: flex;
-  margin: 1rem 0;
+    display: flex;
+    margin: 1rem 0;
 }
 
 .specs .rating img {
-  width: 24px;
-  margin-right: 4px;
+    width: 24px;
+    margin-right: 4px;
 }
 
 .specs .rating span {
-  font-size: 1.125rem;
+    font-size: 1.125rem;
 }
 
 .specs .rating .total {
-  color: var(--color--lightGray);
+    color: var(--color--lightGray);
 }
 
 .specs .overview,
 .specs .overview h2,
 .specs .genres h2 {
-  line-height: 200%;
+    line-height: 200%;
 }
 
 .specs .overview p {
-  display: -webkit-box;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  -webkit-line-clamp: 5;
-  -webkit-box-orient: vertical;
-  line-height: 1.7;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    line-height: 1.7;
 }
 
 .specs .genre {
-  display: flex;
-  margin: 0.5rem 0;
+    display: flex;
+    margin: 0.5rem 0;
 }
 
 .genreContainer {
-  height: 1.5rem;
-  padding: 0.5rem 1rem;
-  margin-right: 1rem;
-  border-radius: 1rem;
-  background-color: rgba(81, 81, 81, 0.6);
-  font-weight: bold;
-  font-size: 0.825rem;
-  line-height: 0.8rem;
-  text-transform: capitalize;
-  display: flex;
-  gap: 0.25rem;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
+    height: 1.5rem;
+    padding: 0.5rem 1rem;
+    margin-right: 1rem;
+    border-radius: 1rem;
+    background-color: rgba(81, 81, 81, 0.6);
+    font-weight: bold;
+    font-size: 0.825rem;
+    line-height: 0.8rem;
+    text-transform: capitalize;
+    display: flex;
+    gap: 0.25rem;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
 }
 
 /* ---------- actor ---------- */
 
 .actorContainer {
-  flex-direction: column;
+    flex-direction: column;
 }
 
 .actorTitle {
-  width: 100%;
-  text-align: center;
-  margin-bottom: 2rem;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 2rem;
 }
 
 .actors {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  overflow: hidden;
-  position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    overflow: hidden;
+    position: relative;
 }
 
 .slider {
-  display: flex;
-  align-items: baseline;
-  transition: transform 0.3s ease;
+    display: flex;
+    align-items: baseline;
+    transition: transform 0.3s ease;
 }
 
 .actor {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-width: 180px;
-  margin-right: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 180px;
+    margin-right: 1rem;
 }
 
 .actor img {
-  width: var(--width--actor180);
-  height: calc(var(--width--actor180) * 3 / 2);
-  border-radius: 10px;
-  cursor: pointer;
+    width: var(--width--actor180);
+    height: calc(var(--width--actor180) * 3 / 2);
+    border-radius: 10px;
+    cursor: pointer;
 }
 
 .actor span {
-  margin-top: 1rem;
+    margin-top: 1rem;
 }
 
 #prevButton,
 #nextButton {
-  position: absolute;
-  background-color: transparent;
-  padding: 1rem 1rem;
-  width: 3rem;
-  height: 3rem;
-  border-radius: 50px;
-  background-color: rgba(29, 29, 29, 0.9);
-  border: none;
-  cursor: pointer;
+    position: absolute;
+    background-color: transparent;
+    padding: 1rem 1rem;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50px;
+    background-color: rgba(29, 29, 29, 0.9);
+    border: none;
+    cursor: pointer;
 }
 
 #prevButton {
-  top: 45%;
-  transform: translateY(-45%);
+    top: 45%;
+    transform: translateY(-45%);
 }
 
 #nextButton {
-  top: 45%;
-  right: 0;
-  transform: translateY(-45%);
+    top: 45%;
+    right: 0;
+    transform: translateY(-45%);
 }
 
 #prevButton img,
 #nextButton img {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 /* 스켈레톤 UI */
 .skeletons {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: start;
-  margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: start;
+    margin: 0 auto;
 }
 
 .skeleton.poster {
-  width: var(--width--poster300);
-  height: calc(var(--width--poster300) * 3 / 2);
-  flex-shrink: 0;
+    width: var(--width--poster300);
+    height: calc(var(--width--poster300) * 3 / 2);
+    flex-shrink: 0;
 }
 
 .skeletons .specs {
-  flex-grow: 0;
+    flex-grow: 0;
 }
 
 .skeleton {
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  height: 100%;
-  border-radius: 1rem;
-  background-color: #1c212e;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    border-radius: 1rem;
+    background-color: #1c212e;
 }
 
 .skeleton::after {
-  content: "";
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-image: linear-gradient(
-    270deg,
-    rgba(255, 255, 255, 0),
-    rgba(255, 255, 255, 0.2),
-    rgba(255, 255, 255, 0)
-  );
-  border-radius: 1rem;
-  transform: translateX(-100%);
-  animation: load 1s infinite;
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: linear-gradient(270deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+    border-radius: 1rem;
+    transform: translateX(-100%);
+    animation: load 1s infinite;
 }
 
 .skeleton.genres {
-  width: 150px;
-  height: 1.5rem;
-  margin-bottom: 0.825rem;
+    width: 150px;
+    height: 1.5rem;
+    margin-bottom: 0.825rem;
 }
 
 .skeleton.titleK {
-  width: 400px;
-  height: 3rem;
-  margin-bottom: 0.5rem;
-  border-radius: 2rem;
+    width: 400px;
+    height: 3rem;
+    margin-bottom: 0.5rem;
+    border-radius: 2rem;
 }
 
 .skeleton.titleE {
-  width: 200px;
-  height: 2rem;
-  margin-bottom: 0.5rem;
+    width: 200px;
+    height: 2rem;
+    margin-bottom: 0.5rem;
 }
 
 .skeleton.info {
-  width: 100px;
-  height: 1.5rem;
-  margin-bottom: 0.5rem;
+    width: 100px;
+    height: 1.5rem;
+    margin-bottom: 0.5rem;
 }
 
 .skeleton.rating {
-  width: 70px;
-  height: 1.5rem;
-  margin-bottom: 0.5rem;
+    width: 70px;
+    height: 1.5rem;
+    margin-bottom: 0.5rem;
 }
 
 .skeleton.overview {
-  width: 600px;
-  height: 220px;
-  margin-bottom: 0.5rem;
+    width: 600px;
+    height: 220px;
+    margin-bottom: 0.5rem;
 }
 
 .skeleton.actor {
-  width: var(--width--actor180);
-  height: calc(var(--width--actor180) * 3 / 2);
-  margin-bottom: .5rem;
+    width: var(--width--actor180);
+    height: calc(var(--width--actor180) * 3 / 2);
+    margin-bottom: 0.5rem;
 }
 
-
 @keyframes load {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(100%);
-  }
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
 }
 
 .logo {
-  cursor: pointer;
+    cursor: pointer;
 }
