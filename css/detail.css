@@ -161,13 +161,17 @@ body {
 }
 
 .specs .rating {
+  align-items: center;
+
   display: flex;
+  justify-content: start;
+  align-items: center;
   margin: 1rem 0;
 }
 
 .specs .rating img {
-  width: 24px;
-  margin-right: 4px;
+  margin-right: 0.5rem;
+  width: 20px;
 }
 
 .specs .rating span {

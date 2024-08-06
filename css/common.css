@@ -302,7 +302,7 @@ body {
   }
 
   .movieDetails .specs {
-    text-align: center;
+    align-items: center;
     max-width: 100%; /* 최대 너비를 100%로 설정 */
   }
 
@@ -322,10 +322,10 @@ body {
     margin-top: 0.5rem; /* 여백 조정 */
   }
 
-  .specs .rating {
+  /* .specs .rating {
     margin-bottom: 1rem;
     justify-content: center;
-  }
+  } */
 
   .specs .overview p {
     -webkit-line-clamp: 4; /* 줄 수를 줄여서 텍스트 길이 조정 */
