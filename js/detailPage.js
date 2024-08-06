@@ -226,14 +226,14 @@ const createImageSlider = () => {
   let actors = document.querySelectorAll('.actor:not(.skeleton)');
   let slider = document.querySelector('.slider');
   let totalActors = actors.length;
-  
+
   const nextSlide = () => {
-    currentIndex == totalActors - 5 ? (currentIndex = 0) : currentIndex++;
+    currentIndex == totalActors - 5  ? (currentIndex = 0) : currentIndex++;
     updateSlider();
   }
   
   const prevSlide = () => {
-    currentIndex == 0 ? (currentIndex = totalActors - 5) : currentIndex--;
+    currentIndex == 0 ? (currentIndex = totalActors - 5 ) : currentIndex--;
     updateSlider();
   }
   
