@@ -72,7 +72,27 @@ body {
 .header .logo {
   font-size: 1.2rem;
   font-weight: 700;
+  display: flex;
+  justify-content: space-between;
 }
+
+.darkmode {
+    width: 30px;
+    height: 30px;
+}
+
+.darkmodeBtn{
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+}
+  
+.darkmodeBtn:hover {
+    border-radius: 100%;
+    background-color: var(--searchForm-button-hover);
+}
+  
 /* main */
 .main {
   padding: 16px 24px;
