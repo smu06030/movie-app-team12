@@ -378,7 +378,6 @@ body {
 }
 
 @keyframes load {
-<<<<<<< HEAD
   0% {
     transform: translateX(-100%);
   }
@@ -386,12 +385,7 @@ body {
     transform: translateX(100%);
   }
 }
-=======
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
-}
 
 .logo {
   cursor: pointer;
 }
->>>>>>> 03b8427667870173a58714ce0dcd52eb53c57c07
