@@ -169,6 +169,7 @@ body {
   display: flex;
   justify-content: space-between;
   padding: 4px 8px 8px;
+  gap: 6rem;
 }
 
 .movieYear,
