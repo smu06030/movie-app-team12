@@ -90,6 +90,11 @@
 }
 
 /* ------------------------------------- */
+/* .reviewItem + hr {
+  border: none;
+  border-top: 1px solid #ffffff33;
+  margin: 8px 0;
+} */
 
 .inputIdPw {
   display: flex;
