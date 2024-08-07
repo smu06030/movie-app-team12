@@ -1,68 +1,63 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>죽을래? 🗡️</title>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>1석 2조 영화 페이지</title>
 
-    <!-- Reset css -->
-    <link rel="stylesheet" href="./css/reset.css" />
+        <!-- Reset css -->
+        <link rel="stylesheet" href="./css/reset.css" />
 
-    <!-- font -->
-    <link
-      rel="stylesheet"
-      as="style"
-      crossorigin
-      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
-    />
-    <link rel="stylesheet" href="./css/common.css">
-    
-    <script src="./js/common.js" type="module" defer></script>
-    
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-</head>
-<body data-theme="dark-mode">
-  <!-- container --> 
-  <div class="container">
-    <!-- header -->
-    <header class="header">
-      <!-- 로고 -->
-      <div class="logo">
-        <div>MOVIE</div>
-      </div>
-      <!-- 검색창 -->
-      <form class="searchForm" id="searchForm">
-        <input type="text" id="search" placeholder="영화 제목 검색 (한글, 영문)" autofocus>
-        <button type="submit" id="searchBtn"><img src="./images/search_dark.svg" alt="search"></button>
-      </form>
-      <!-- 네비바 -->
-      <div class="movieCategory">
-        <ul>
-          <li><a id="popular" href="">인기작</a></li>
-          <li><a id="now_playing" href="">현재상영작</a></li>
-          <li><a id="upcoming" href="">개봉예정작</a></li>
-          <div class="darkmode">
-            <button class="darkmodeBtn">
-              <img src="./images/moon.png" alt="다크모드">
-            </button>
-          </div>
-        </ul>
-      </div>
-    </header>
-    <!-- 영화 리스트 -->
-    <main class="main">
-      <div class="mainTitleSelectBox">
-        <div class="mainTitle">Movies</div>
-        <select id="selectFilterMovie">
-          <option value="star" selected>별점순</option>
-          <option value="ko">이름순(ko)</option>
-          <option value="en">이름순(en)</option>
-          <option value="releaseDate">개봉일순</option>
-        </select>
-      </div>
-      <ul class="movieCards"></ul>
-    </main>
-  </div>
-</body>
+        <!-- font -->
+        <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+        <link rel="stylesheet" href="./css/common.css" />
+
+        <script src="./js/common.js" type="module" defer></script>
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" />
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    </head>
+    <body data-theme="dark-mode">
+        <!-- container -->
+        <div class="container">
+            <!-- header -->
+            <header class="header">
+                <!-- 로고 -->
+                <div class="logo">
+                    <div>MOVIE</div>
+                </div>
+                <!-- 검색창 -->
+                <form class="searchForm" id="searchForm">
+                    <input type="text" id="search" placeholder="영화 제목 검색 (한글, 영문)" autofocus />
+                    <button type="submit" id="searchBtn"><img src="./images/search_dark.svg" alt="search" /></button>
+                </form>
+                <!-- 네비바 -->
+                <div class="movieCategory">
+                    <ul>
+                        <li><a id="popular" href="">인기작</a></li>
+                        <li><a id="now_playing" href="">현재상영작</a></li>
+                        <li><a id="upcoming" href="">개봉예정작</a></li>
+                        <div class="darkmode">
+                            <button class="darkmodeBtn">
+                                <img src="./images/moon.png" alt="다크모드" />
+                            </button>
+                        </div>
+                    </ul>
+                </div>
+            </header>
+            <!-- 영화 리스트 -->
+            <main class="main">
+                <div class="mainTitleSelectBox">
+                    <div class="mainTitle">Movies</div>
+                    <select id="selectFilterMovie">
+                        <option value="star" selected>별점순</option>
+                        <option value="ko">이름순(ko)</option>
+                        <option value="en">이름순(en)</option>
+                        <option value="releaseDate">개봉일순</option>
+                    </select>
+                </div>
+                <ul class="movieCards"></ul>
+            </main>
+        </div>
+    </body>
 </html>
