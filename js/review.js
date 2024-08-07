@@ -43,13 +43,6 @@ function getReview() {
             </div>
             <hr>
         `;
-    // <div>
-    //     <div>${reviewList[i]["user"]}</div>
-    //     <div>${reviewList[i]["review"]}</div>
-    //     <button onclick="updateReview(${i})">수정</button>
-    //     <button onclick="deleteReview(${i})">삭제</button>
-    // </div>
-    // <hr>
 
     reviewBox.innerHTML += tempHtml;
   }
@@ -66,26 +59,29 @@ function reviewSetItem() {
 
 // 리뷰 저장
 function setReview() {
-  let user = document.getElementById("user").value;
-  let password = document.getElementById("password").value;
-  let review = document.getElementById("review").value;
+  let user = document.getElementById("user").value.trim();
+  let password = document.getElementById("password").value.trim();
+  let review = document.getElementById("review").value.trim();
 
   const person = { user, password: encrypt(password), review };
 
   if (user === "") {
     alert("작성자를 입력해주세요.");
+    document.getElementById("user").value = "";
     return;
   } else if (user.length < 2) {
     alert("작성자는 최소 2글자 이상 입력해야 합니다.");
     return;
   } else if (password === "") {
     alert("비밀번호를 입력해주세요.");
+    document.getElementById("password").value = "";
     return;
   } else if (password.length < 4) {
     alert("비밀번호는 최소 4글자 이상 입력해야 합니다.");
     return;
   } else if (review === "") {
     alert("리뷰를 입력해주세요.");
+    document.getElementById("review").value = "";
     return;
   } else if (review.length < 10) {
     alert("리뷰는 최소 10글자 이상 입력해야 합니다.");
